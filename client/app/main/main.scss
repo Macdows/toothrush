@@ -11,6 +11,7 @@
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
+  font-weight: 700;
 }
 
 .hero-unit {
@@ -19,9 +20,30 @@
   color: #F5F5F5;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #4393B9;
+  // background: #3CC6AB;
+  background: #1abc9c;
+  opacity: 0.8;
 }
 
 .navbar-text {
   margin-left: 15px;
+}
+
+.user-avatar {
+    max-width: 130px;
+    width: 100%;
+    border: 3px solid white;
+}
+
+.btn-spin{
+    border-radius:50%;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+}
+
+.btn-spin:hover{
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
 }

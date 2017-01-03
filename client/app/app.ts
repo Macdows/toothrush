@@ -23,6 +23,8 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
+import contact from './contact/contact.component';
+import dentalSheet from './dental-sheet/dental-sheet.component';
 
 
 import './app.scss';
@@ -44,7 +46,9 @@ angular.module('toothrushApp', [
   main,
   constants,
   socket,
-  util
+  util,
+  contact,
+  dentalSheet
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
