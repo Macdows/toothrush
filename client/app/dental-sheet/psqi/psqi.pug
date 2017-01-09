@@ -36,6 +36,15 @@ form.form-labels-on-top(method='post', action='#')
           br
           span.sub-label(ng-if='question.textAfter') (l'heure doit être au format 24h)
 
+  .form-row(ng-repeat='question in ::psqiCtrl.radioInputs')
+    label
+      span {{question.label}}
+    .form-radio-buttons
+      div
+        label(ng-repeat='option in question.scale')
+          input(type='radio', name='radio')
+          span {{option}}
+
   .form-row(ng-repeat='question in ::psqiCtrl.formContent')
     label
       span {{question.label}}
