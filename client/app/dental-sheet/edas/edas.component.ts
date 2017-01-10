@@ -34,7 +34,7 @@ export class EdasComponent {
       '21. J\’ai eu l’impression que la vie n’avait pas de sens.',
     ];
 
-    this.scale = [0,1,2,3];
+    this.scale = [0, 1, 2, 3];
   }
 }
 
