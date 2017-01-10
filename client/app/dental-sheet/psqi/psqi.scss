@@ -4,6 +4,25 @@
   margin-left: 295px !important;
 }
 
+.sub-question {
+  margin-left: 30px !important;
+  margin-bottom: 14px !important;
+}
+
+.radio-container {
+  margin-top: 10px;
+}
+
+.fixed-width {
+  &{
+    width: 220px;
+  }
+
+  textarea {
+    min-width: 400px;
+  }
+}
+
 .input-label {
   width: 260px;
   display: inline-block;

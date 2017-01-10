@@ -8,6 +8,8 @@ import routes from './psqi.routes';
 export class PsqiComponent {
   history = []
   textInputs = []
+  radioTable1 = []
+  radioTable2 = []
   radioInputs = []
 
   /*@ngInject*/
@@ -58,6 +60,26 @@ export class PsqiComponent {
         label: '10. Avez vous un conjoint ou un camarade de chambre ?',
         scale: ['Ni l\'un, ni l\'autre', 'Oui, mais dans une chambre différente', 'Oui, dans la même chambre mais pas dans le même lit', 'Oui, dans le même lit']
       }
+    ]
+
+    this.radioTable1 = [
+      'a) vous n\'avez pas pu vous endormir en moins de 30mn',
+      'b) vous vous êtes réveillé(e) au milieu de la nuit ou précocement le matin',
+      'c) vous avez dû vous lever pour aller aux toilettes',
+      'd) vous n\'avez pas pu respirer correctement',
+      'e) vous avez toussé',
+      'f) vous avez eu trop froid',
+      'g) vous avez eu trop chaud',
+      'h) vous avez eu de mauvais rêves',
+      'i) vous avez eu des douleurs'
+    ]
+
+    this.radioTable2 = [
+      'a) un ronflement fort',
+      'b) de longues pauses respiratoires pendant votre sommeil',
+      'c) des saccades ou des secousses des jambes pendant que vous dormiez',
+      'd) des épisodes de désorientation ou de confusion pendant le sommeil',
+      'e) d\'autres motifs d\'agitation pendant le sommeil'
     ]
   }
 }
