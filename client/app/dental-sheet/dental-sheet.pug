@@ -1,56 +1,396 @@
-<<<<<<< HEAD
 form.form-labels-on-top(method='post', action='#')
-  .form-title-row
-    h1 Information du patient
-  .square
-    label
-      span Identifiant du patient :
-      br
-      input(type='text', name='patient-information')
-  .square
-    label
-      span Date de naissance :
-      br
-      input(type='text', name='birthdate')
-  .square
-    label
-      span Date de consultation :
-      br
-      input(type='text', name='date')
-  .square
-    label
-      span Sexe :
-      br
-      select(name='sexe')
-        option Homme
-        option Femme
-  .square
-    label
-      span Profession :
-      br
-      input(type='text', name='job')
-  .square
-    label
-      span Bilan de santé :
-      br
-      textarea
+  fieldset
+    .form-title-row
+      h1 Information du patient
+    .square
+      label
+        span Identifiant du patient :
+        br
+        input(type='text', name='patient-information')
+    .square
+      label
+        span Date de naissance :
+        br
+        input(type='text', name='birthdate')
+    .square
+      label
+        span Date de consultation :
+        br
+        input(type='text', name='date')
+    .square
+      label
+        span Sexe :
+        br
+        select(name='sexe')
+          option Homme
+          option Femme
+    .square
+      label
+        span Profession :
+        br
+        input(type='text', name='job')
+    .square
+      label
+        span Bilan de santé :
+        br
+        textarea(name='checkup')
 
-  .form-title-row
-    h1 Motif de la consultation :
-  .square
+  // //1 motif de la consultation
+  fieldset
+    .form-title-row
+      h1 Motif de la consultation :
+    .square
+      label
+        span Bilan de santé :
+        br
+        textarea(name='checkup2')
+    .square
+      label
+        input(type='checkbox', value='douleur', name='pain')
+        |       Douleur
+
+  // //2 evaluation de la douleur
+  fieldset
+
+    .form-title-row
+      h1 Evaluation de la douleur
+    .square
+      label
+        span Douleur 1 :
+        br
+        input(type='text', name='firstpain')
+    .square
+      label
+        span     Evaluation :   Fond Douloureux
+        br
+        select(ng-options='numbers as numbers for numbers in dentalSheetCtrl.numbers', ng-model='selected', name='EVAFond')
+    .square
+      label
+        span     Evaluation :   Pic Douloureux
+        br
+        select(ng-options='numbers2 as numbers2 for numbers2 in dentalSheetCtrl.numbers2', ng-model='selected', name='EVAPic')
+    .square
+      label
+        span     Date de début
+        input(type='text', name='startdate')
+    .square
+      label
+        span     Qualité
+        br
+        input(type='text', name='quality')
+    .square
+      label
+        span     Durée
+        br
+        input(type='text', name='delay')
+    .square
+      label
+        span     Frequence
+        br
+        input(type='text', name='frequency')
+    .square
+      label
+        span     Circonstance de début
+        br
+        input(type='text', name='startcircumstance')
+    .square
+      label
+        span     Modifié par :
+        br
+        input(type='text', name='modifyby')
+    .square
+      label
+        span    Traitement
+        br
+        input(type='text', name='treatment')
+    .square
+      label
+        span    Score DN4 :
+        br
+        input(type='text', name='dn4score', value='0')
+
+  // //3 Environement
+  fieldset
+    .form-title-row
+      h1 Environement :
+    .square
+      label
+        span Familial :
+        br
+        textarea(name='family')
+    .square
+      label
+        span Social :
+        br
+        textarea(name='social')
+    .square
+      label
+        span Professionnel :
+        br
+        textarea(name='professional')
+    .square
+      label
+        span    Anxiété :
+        br
+        input(type='text', name='anxiety', value='0')
+    .square
+      label
+        span    Depression :
+        br
+        input(type='text', name='deoression', value='0')
+    .square
+      label
+        span    Stress :
+        br
+        input(type='text', name='stress', value='0')
+
+  // //4 Trouble de la posture
+  fieldset
+    .form-title-row
+      h1 Trouble de la posture :
+    .square
+      label
+        input(type='checkbox', value='douleur', name='rachidiancheck')
+        |       Rachidienne
+    .square
+      label
+        span details:
+        br
+        textarea(name='rachidiandetails')
+    .square
+      label
+        input(type='checkbox', value='douleur', name='cephaliquecheck')
+        |       Céphalique
+    .square
+      label
+        span details:
+        br
+        textarea(name='cephaliquedetails')
+
+  // //5 Trouble du sommeil
+  fieldset
+    .form-title-row
+      h1 Trouble du sommeil :
+
+    h4     Souffrez vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
+    input(type='radio', name='sleepdisorder', value='oui')
+    |  oui
+    input(type='radio', name='sleepdisorder', value='non')
+    |  non
+    br
+    .square
+      label
+        span Autres symptômes:
+        br
+        textarea(name='othersymptoms')
+    .square
+      label
+        span Traitement:
+        br
+        textarea(name='treatmenttextarea')
+    .square
+      label
+        span    Score PSQI :
+        br
+        input(type='text', name='psqiscore', value='0')
+    .square
+      label
+        span    Score ISI :
+        br
+        input(type='text', name='isiscore', value='0')
+
+  // //6 Trouble oculaire
+  fieldset
+    .form-title-row
+      h1 Trouble oculaire :
+    .square
+      label
+        br
+        textarea(name='eyedisorder')
+
+  // //7  Habitude novices
+  fieldset
+    .form-title-row
+      h1 Habitude novices :
+    .square
+      label
+        input(type='checkbox', value='Onycophagie', name='onycophagie')
+        |       Onycophagie
+    .square
+      label
+        input(type='checkbox', value='Mordillement', name='mordillement')
+        |             Mordillement des lèvres/stylo/objets
+    .square
+      label
+        input(type='checkbox', value='Bruxisme d\'éveil', name='bruxisme')
+        |       Bruxisme d'éveil
+    .square
+      label
+        input(type='checkbox', value='chewing-gum', name='chewing-gum')
+        |       Chewing-gum
+    .square
+      label
+        input(type='checkbox', value='tabac', name='tabac')
+        |       tabac
+    .square
+      label
+        input(type='checkbox', value='autres', name='others')
+        |       Autres
+    .square
+      label
+        br
+        textarea(name='novicehabits')
+
+  // //8  DYSFONCTIONNEMENTS ORO-LINGAUX :
+  fieldset
+    .form-title-row
+      h1 Dysfonctionnements oro-lingaux :
+    .square
+      label
+        input(type='checkbox', value='Dysfonctionnements orolinguaux',name='dysfonctionnements_orolinguaux')
+        |             Dysfonctionnements orolinguaux
+    .square
+      label
+        input(type='checkbox', value='Déglutition atypique',name='déglutition_atypique')
+        |             Déglutition atypique
+    .square
+      label
+        span      Score de Friedman :
+        br
+        input(type='text', name='friedmanscore', value='0')
+    .square
+      label
+        span      Score de Mallampati :
+        br
+        input(type='text', name='mallampaticore', value='0')
+
+  // //9 TRAUMATISME :
+  fieldset
+    .form-title-row
+      h1 Traumatisme :
+    .square
+      label
+        br
+        textarea(name='traume')
+
+  // //10 OBSERVATIONS COMPLÉMENTAIRES :
+  fieldset
+    .form-title-row
+      h1 Observations complémentaires :
+    .square
+      label
+        br
+        textarea(name='observations')
+
+  // //12 Rapport incisifs
+  // Revenir sur le post du radio qui est bug
+  fieldset
+    .form-title-row
+      h1 Rapport incisifs :
+    p Dent de reference :
+    input(type='radio', name='toothref', value='11')
+    |  11
+    input(type='radio', name='toothref', value='21')
+    |  21
+    input(type='radio', name='toothref', value='non')
+    |  autre
+    textarea(rows='1', cols='3', name='toothref')
+
+    br
+
+    input(type='radio', name='toothref2', value='31')
+    |  31
+    input(type='radio', name='toothref2', value='41')
+    |  41
+    input(type='radio', name='toothref2', value='non')
+    |  autre
+    input(type='radio', name='toothref2', value='non')
+    |  autre
+    textarea(rows='1', cols='3', name='toothref2')
+    br
+    |   Surplomb horizontal
+    input(type='text', name='horizontaloverhang', value='0')
+    |   mm
     label
-      span Bilan de santé :
-      br
-      textarea
-  .square
+      input(type='checkbox', value='negatif', name='ifnegatif')
+      |     Si négatif
+    br
+    |   Recouvrement vertical
+    input(type='text', name='isiscore', value='0')
+    |   mm
     label
-      input(type='radio', name='radio')
-      span Douleur
+      input(type='checkbox', value='negatif', name='ifnegatif2')
+      |     Si négatif
+    br
+    |   Existe-t-il un décalage des milieux inter-incisifs ?
+    input(type='radio', name='decalage', value='oui')
+    |  oui (
+    textarea(rows='1', cols='3', name='decalage')
+    | mm)
+    input(type='radio', name='decalage', value='non')
+    |  non
+    .square
+
+  // //14 TRAJET D'OUVERTURE/FERMETURE :
+  fieldset
+    .form-title-row
+      h1 Trajet d'ouverture fermeture :
+    p Forme du trajet d'ouverture :
+    input#trajetouverture0(type='checkbox', onchange="if(document.getElementById('trajetouverture0').checked) for (var i = 1 ; i < 5 ; ++i) document.getElementById('trajetouverture' + i).checked = false;")
+    label(for='trajetouverture0') rectiligne
+    br
+    input#trajetouverture1(type='checkbox', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
+    label(for='trajetouverture1') déflexion corrigée à droite
+    br
+    input#trajetouverture2(type='checkbox', onchange="if(document.getElementById('trajetouverture2').checked) document.getElementById('trajetouverture0').checked = false;")
+    label(for='trajetouverture2') déflexion corrigée à gauche
+    br
+    input#trajetouverture3(type='checkbox', onchange="if(document.getElementById('trajetouverture3').checked) document.getElementById('trajetouverture0').checked = false;")
+    label(for='trajetouverture3') déviation non corrigée à droite
+    br
+    input#trajetouverture4(type='checkbox', onchange="if(document.getElementById('trajetouverture4').checked) document.getElementById('trajetouverture0').checked = false;")
+    label(for='trajetouverture4') déviation non corrigée à gauche
+    br
+    .square
+
+  // //16 BLOCAGE ARTICULAIRE :
+  fieldset
+    .form-title-row
+      h1 Blocage articulaire :
+    h4   Vous est-il arrivé d'être bloqué(e) ?
+    .square
+      label
+        input(type='checkbox', value='Bouche ouverte',name='open_mouth')
+        |             Bouche ouverte
+    .square
+      label
+        input(type='checkbox', value='Bouche ferme',name='close_mouth')
+        |             Bouche ferme
+    .square
+      label
+        input(type='checkbox', value='ATM droit',name='ATM_right')
+        |             ATM droit
+    .square
+      label
+        input(type='checkbox', value='ATM gauche',name='ATM_left')
+        |             ATM gauche
+    .square
+      label
+        span  Frequence :
+        br
+        input(type='text', name='frequency2')
+    .square
+      label
+        span  Dernier episode :
+        br
+        input(type='text', name='lastepisode')
+
+
+
 
 
   .form-row
     button(type='submit') Submit Form
-=======
 a.btn.btn-default.btn-lg.btn-register(ui-sref='edas')
   | EDAS21
 
@@ -59,4 +399,3 @@ a.btn.btn-default.btn-lg.btn-register(ui-sref='isi')
 
 a.btn.btn-default.btn-lg.btn-register(ui-sref='psqi')
   | PSQI
->>>>>>> 90c72df9e641905d37e04d5ec043e22b15d6ba1a
