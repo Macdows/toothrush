@@ -38,7 +38,7 @@ form.form-labels-on-top(method='post', action='#')
   // //1 motif de la consultation
   fieldset
     .form-title-row
-      h1 Motif de la consultation :
+      h1 1 Motif de la consultation :
     .square
       label
         span Bilan de santé :
@@ -53,7 +53,7 @@ form.form-labels-on-top(method='post', action='#')
   fieldset
 
     .form-title-row
-      h1 Evaluation de la douleur
+      h1 2 Evaluation de la douleur
     .square
       label
         span Douleur 1 :
@@ -63,12 +63,12 @@ form.form-labels-on-top(method='post', action='#')
       label
         span     Evaluation :   Fond Douloureux
         br
-        select(ng-options='numbers as numbers for numbers in dentalSheetCtrl.numbers', ng-model='selected', name='EVAFond')
+        select(ng-options='numbers as numbers for numbers in dentalSheetCtrl.numbers', ng-model='EVAFond', name='EVAFond')
     .square
       label
         span     Evaluation :   Pic Douloureux
         br
-        select(ng-options='numbers2 as numbers2 for numbers2 in dentalSheetCtrl.numbers2', ng-model='selected', name='EVAPic')
+        select(ng-options='numbers2 as numbers2 for numbers2 in dentalSheetCtrl.numbers2', ng-model='EVAPic', name='EVAPic')
     .square
       label
         span     Date de début
@@ -112,7 +112,7 @@ form.form-labels-on-top(method='post', action='#')
   // //3 Environement
   fieldset
     .form-title-row
-      h1 Environement :
+      h1 3 Environement :
     .square
       label
         span Familial :
@@ -147,7 +147,7 @@ form.form-labels-on-top(method='post', action='#')
   // //4 Trouble de la posture
   fieldset
     .form-title-row
-      h1 Trouble de la posture :
+      h1 4 Trouble de la posture :
     .square
       label
         input(type='checkbox', value='douleur', name='rachidiancheck')
@@ -170,7 +170,7 @@ form.form-labels-on-top(method='post', action='#')
   // //5 Trouble du sommeil
   fieldset
     .form-title-row
-      h1 Trouble du sommeil :
+      h1 5 Trouble du sommeil :
 
     h4     Souffrez vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
     input(type='radio', name='sleepdisorder', value='oui')
@@ -202,7 +202,7 @@ form.form-labels-on-top(method='post', action='#')
   // //6 Trouble oculaire
   fieldset
     .form-title-row
-      h1 Trouble oculaire :
+      h1 6 Trouble oculaire :
     .square
       label
         br
@@ -211,7 +211,7 @@ form.form-labels-on-top(method='post', action='#')
   // //7  Habitude novices
   fieldset
     .form-title-row
-      h1 Habitude novices :
+      h1 7 Habitude novices :
     .square
       label
         input(type='checkbox', value='Onycophagie', name='onycophagie')
@@ -244,7 +244,7 @@ form.form-labels-on-top(method='post', action='#')
   // //8  DYSFONCTIONNEMENTS ORO-LINGAUX :
   fieldset
     .form-title-row
-      h1 Dysfonctionnements oro-lingaux :
+      h1 8 Dysfonctionnements oro-lingaux :
     .square
       label
         input(type='checkbox', value='Dysfonctionnements orolinguaux',name='dysfonctionnements_orolinguaux')
@@ -267,7 +267,7 @@ form.form-labels-on-top(method='post', action='#')
   // //9 TRAUMATISME :
   fieldset
     .form-title-row
-      h1 Traumatisme :
+      h1 9 Traumatisme :
     .square
       label
         br
@@ -276,7 +276,7 @@ form.form-labels-on-top(method='post', action='#')
   // //10 OBSERVATIONS COMPLÉMENTAIRES :
   fieldset
     .form-title-row
-      h1 Observations complémentaires :
+      h1 10 Observations complémentaires :
     .square
       label
         br
@@ -286,7 +286,7 @@ form.form-labels-on-top(method='post', action='#')
   // Revenir sur le post du radio qui est bug
   fieldset
     .form-title-row
-      h1 Rapport incisifs :
+      h1 12 Rapport incisifs :
     p Dent de reference :
     input(type='radio', name='toothref', value='11')
     |  11
@@ -334,7 +334,7 @@ form.form-labels-on-top(method='post', action='#')
   // //14 TRAJET D'OUVERTURE/FERMETURE :
   fieldset
     .form-title-row
-      h1 Trajet d'ouverture fermeture :
+      h1 14 Trajet d'ouverture fermeture :
     p Forme du trajet d'ouverture :
     input#trajetouverture0(type='checkbox', onchange="if(document.getElementById('trajetouverture0').checked) for (var i = 1 ; i < 5 ; ++i) document.getElementById('trajetouverture' + i).checked = false;")
     label(for='trajetouverture0') rectiligne
@@ -356,7 +356,7 @@ form.form-labels-on-top(method='post', action='#')
   // //16 BLOCAGE ARTICULAIRE :
   fieldset
     .form-title-row
-      h1 Blocage articulaire :
+      h1 16 Blocage articulaire :
     h4   Vous est-il arrivé d'être bloqué(e) ?
     .square
       label
@@ -385,9 +385,124 @@ form.form-labels-on-top(method='post', action='#')
         br
         input(type='text', name='lastepisode')
 
+  //18 Elasticité articulaire
+  fieldset
+    .form-title-row
+      h1 18 Elasticité articulaire :
+    | ATM droite :
+    input(type='radio', name='ATMdroite', value='Souple')
+    |  Souple
+    input(type='radio', name='ATMdroite', value='Raide')
+    |  Raide
+    br
+    | ATM gauche :
+    input(type='radio', name='ATMgauche', value='Souple')
+    |  Souple
+    input(type='radio', name='ATMgauche', value='Raide')
+    |  Raide
+    br
 
+  //19. Examen endo-buccal
+  fieldset
+    .form-title-row
+      br
+      h1 19. Examen endo-buccal :
+    h5     Contacts en OIM :
+    input(type='radio', name='oimcontact', value='equilibre')
+    |  répartis de manière équilibrée
+    input(type='radio', name='oimcontact', value='')
+    textarea(rows='1', cols='25', name='oimcontact')
+    br
+    h4     La position dans laquelle vous fermez vos dents vous paraît-elle confortable ?
+    input(type='radio', name='closeteeth', value='oui')
+    |  oui
+    input(type='radio', name='closeteeth', value='non')
+    |  non
+    br
+    br
+    | Mastication unilatérale
+    input(type='radio', name='ATMdroite', value='Souple')
+    |  oui
+    input(type='radio', name='ATMdroite', value='Raide')
+    |  non
+    br
+    br
+    .square
+      |   Interférence(s) en latéralité droite :
+      input(type='text', name='interferenceright', value='')
+    .square
+      |   Interférence(s) en latéralité gauche :
+      input(type='text', name='interferenceleft', value='')
+    .square
+      |   Interférence(s) en latéralité propulsion :
+      input(type='text', name='interferencepropulsion', value='')
+    .square
+      |   Prématurité(s) :
+      input(type='text', name='interferenceprematurite', value='')
+    h5     Différentiel ORC-OIM :
+    .square
+      |   Dans le sens vertical :
+      input(type='text', name='verticalsens', value='')
+    .square
+      |   Dans le sens  antéro-postérieur :
+      input(type='text', name='anteroposterieur', value='')
+    .square
+      |   Dans le sens latéral :
+      input(type='text', name='lateralsens', value='')
 
+  // 20 Rapport incisifs
+  fieldset
+    .form-title-row
+      h1 20. Usures Dentaire/bruxismes :
+    .square
+      |   Erosion(dents)
+      input(type='text', name='horizontaloverhang', value='0')
 
+      br
+    .square
+      |   Attrition(dents)
+      input(type='text', name='horizontaloverhang', value='0')
+
+      br
+    .square
+      |   Abrasion(dents)
+      input(type='text', name='abrasion', value='0')
+
+      br
+    .square
+      |   Bruxisme d'éveil(dents)
+      input(type='text', name='bruxismewake', value='0')
+
+      br
+    .square
+      |   Bruxisme de sommeil(Diagnostic )
+      select(ng-options='plause as plause for plause in dentalSheetCtrl.plause', ng-model='plause', name='plause')
+
+      br
+
+    .square
+      label
+        | Information complémentaire
+        br
+        textarea(name='incisifinfo')
+
+  // Diagnostic :
+  fieldset
+    .form-title-row
+      h1 Diagnostic :
+    .square
+      label
+        br
+        textarea(name='diagnostic')
+
+  // Diagnostic :
+  fieldset
+    .form-title-row
+      h1 Plan de traitement :
+    .square
+      label
+        br
+        textarea(name='treatmentplan')
 
   .form-row
     button(type='submit') Submit Form
