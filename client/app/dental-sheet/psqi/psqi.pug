@@ -5,22 +5,22 @@ form.form-labels-on-top(method='post', action='#')
     label
       span Nom :
       br
-      input(type='text', name='lastname')
+      input(type='text', ng-model='lastname')
   .square
     label
       span Prénom :
       br
-      input(type='text', name='firstname')
+      input(type='text', ng-model='firstname')
   .square
     label
       span Date de naissance :
       br
-      input(type='text', name='birthdate')
+      input(type='text', ng-model='birthdate')
   .square
     label
       span Date de ce jour :
       br
-      input(type='text', name='date')
+      input(type='text', ng-model='date')
   p.description
     | Les questions suivantes ont trait à vos habitudes de sommeil peandant le dernier mois seulement. Vos réponses doivent indiquer ce qui correspond aux expériences que vous avez eues pendant la majorité des jours et des nuits au cours du dernier mois. Répondez à toutes les questions.
 
@@ -44,7 +44,7 @@ form.form-labels-on-top(method='post', action='#')
         span {{question}}
         .radio-container
           label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
-            input(type='radio', name='radio')
+            input(type='radio', ng-model='radio')
             span {{option}}
       div.sub-question
         span j) pour d'autre(s) raison(s). Donnez une description :
@@ -55,7 +55,7 @@ form.form-labels-on-top(method='post', action='#')
         span Indiquez la fréquence des troubles du sommeil pour ces raisons
         .radio-container
           label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
-            input(type='radio', name='radio')
+            input(type='radio', ng-model='radio')
             span {{option}}
 
   .form-row(ng-repeat='question in ::psqiCtrl.radioInputs')
@@ -64,7 +64,7 @@ form.form-labels-on-top(method='post', action='#')
     .form-radio-buttons
       div
         label(ng-repeat='option in question.scale')
-          input(type='radio', name='radio')
+          input(type='radio', ng-model='radio')
           span {{option}}
 
   .form-row
@@ -75,7 +75,7 @@ form.form-labels-on-top(method='post', action='#')
         span {{question}}
         .radio-container
           label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
-            input(type='radio', name='radio')
+            input(type='radio', ng-model='radio')
             span {{option}}
 
   .form-row

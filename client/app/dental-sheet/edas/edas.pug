@@ -5,22 +5,22 @@ form.form-labels-on-top(method='post', action='#')
     label
       span Nom :
       br
-      input(type='text', name='lastname')
+      input(type='text', ng-model='lastname')
   .square
     label
       span Prénom :
       br
-      input(type='text', name='firstname')
+      input(type='text', ng-model='firstname')
   .square
     label
       span Date de naissance :
       br
-      input(type='text', name='birthdate')
+      input(type='text', ng-model='birthdate')
   .square
     label
       span Date de ce jour :
       br
-      input(type='text', name='date')
+      input(type='text', ng-model='date')
   p.description
     | Veuillez lire chaque énoncé et indiquer lequel correspond le mieux à votre expérience au cours de la dernière semaine.
     br
@@ -43,7 +43,7 @@ form.form-labels-on-top(method='post', action='#')
     .form-radio-buttons
       div
         label(ng-repeat="option in edasCtrl.scale")
-          input(type='radio', name='radio')
+          input(type='radio', ng-model='radio')
           span {{option}}
 
 
