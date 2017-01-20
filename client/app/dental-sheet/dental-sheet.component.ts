@@ -5,8 +5,9 @@ const uiRouter = require('angular-ui-router');
 
 import routes from './dental-sheet.routes';
 import IsiComponent from './isi/isi.component';
-import PsqiComponent from './psqi/psqi.component';
 import EdasComponent from './edas/edas.component';
+import PsqiComponent from './psqi/psqi.component';
+
 
 export class DentalSheetComponent {
   /*@ngInject*/

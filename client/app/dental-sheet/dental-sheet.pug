@@ -6,34 +6,34 @@ form.form-labels-on-top(method='post', action='#')
       label
         span Identifiant du patient :
         br
-        input(type='text', name='patient-information')
+        input(type='text', ng-model='patient-information')
     .square
       label
         span Date de naissance :
         br
-        input(type='text', name='birthdate')
+        input(type='text', ng-model='birthdate')
     .square
       label
         span Date de consultation :
         br
-        input(type='text', name='date')
+        input(type='text', ng-model='date')
     .square
       label
         span Sexe :
         br
-        select(name='sexe')
+        select(ng-model='sexe')
           option Homme
           option Femme
     .square
       label
         span Profession :
         br
-        input(type='text', name='job')
+        input(type='text', ng-model='job')
     .square
       label
         span Bilan de santé :
         br
-        textarea(name='checkup')
+        textarea(ng-model='checkup')
 
   // //1 motif de la consultation
   fieldset
@@ -43,10 +43,10 @@ form.form-labels-on-top(method='post', action='#')
       label
         span Bilan de santé :
         br
-        textarea(name='checkup2')
+        textarea(ng-model='checkup2')
     .square
       label
-        input(type='checkbox', value='douleur', name='pain')
+        input(type='checkbox', value='douleur', ng-model='pain')
         |       Douleur
 
   // //2 evaluation de la douleur
@@ -58,56 +58,56 @@ form.form-labels-on-top(method='post', action='#')
       label
         span Douleur 1 :
         br
-        input(type='text', name='firstpain')
+        input(type='text', ng-model='firstpain')
     .square
       label
         span     Evaluation :   Fond Douloureux
         br
-        select(ng-options='numbers as numbers for numbers in dentalSheetCtrl.numbers', ng-model='EVAFond', name='EVAFond')
+        select(ng-options='numbers as numbers for numbers in dentalSheetCtrl.numbers', ng-model='EVAFond')
     .square
       label
         span     Evaluation :   Pic Douloureux
         br
-        select(ng-options='numbers2 as numbers2 for numbers2 in dentalSheetCtrl.numbers2', ng-model='EVAPic', name='EVAPic')
+        select(ng-options='numbers2 as numbers2 for numbers2 in dentalSheetCtrl.numbers2', ng-model='EVAPic')
     .square
       label
         span     Date de début
-        input(type='text', name='startdate')
+        input(type='text', ng-model='startdate')
     .square
       label
         span     Qualité
         br
-        input(type='text', name='quality')
+        input(type='text', ng-model='quality')
     .square
       label
         span     Durée
         br
-        input(type='text', name='delay')
+        input(type='text', ng-model='delay')
     .square
       label
         span     Frequence
         br
-        input(type='text', name='frequency')
+        input(type='text', ng-model='frequency')
     .square
       label
         span     Circonstance de début
         br
-        input(type='text', name='startcircumstance')
+        input(type='text', ng-model='startcircumstance')
     .square
       label
         span     Modifié par :
         br
-        input(type='text', name='modifyby')
+        input(type='text', ng-model='modifyby')
     .square
       label
         span    Traitement
         br
-        input(type='text', name='treatment')
+        input(type='text', ng-model='treatment')
     .square
       label
         span    Score DN4 :
         br
-        input(type='text', name='dn4score', value='0')
+        input(type='text', ng-model='dn4score', value='0')
 
   // //3 Environement
   fieldset
@@ -117,32 +117,32 @@ form.form-labels-on-top(method='post', action='#')
       label
         span Familial :
         br
-        textarea(name='family')
+        textarea(ng-model='family')
     .square
       label
         span Social :
         br
-        textarea(name='social')
+        textarea(ng-model='social')
     .square
       label
         span Professionnel :
         br
-        textarea(name='professional')
+        textarea(ng-model='professional')
     .square
       label
         span    Anxiété :
         br
-        input(type='text', name='anxiety', value='0')
+        input(type='text', ng-model='anxiety', value='0')
     .square
       label
         span    Depression :
         br
-        input(type='text', name='deoression', value='0')
+        input(type='text', ng-model='deoression', value='0')
     .square
       label
         span    Stress :
         br
-        input(type='text', name='stress', value='0')
+        input(type='text', ng-model='stress', value='0')
 
   // //4 Trouble de la posture
   fieldset
@@ -150,22 +150,22 @@ form.form-labels-on-top(method='post', action='#')
       h1 4 Trouble de la posture :
     .square
       label
-        input(type='checkbox', value='douleur', name='rachidiancheck')
+        input(type='checkbox', value='douleur', ng-model='rachidiancheck')
         |       Rachidienne
     .square
       label
         span details:
         br
-        textarea(name='rachidiandetails')
+        textarea(ng-model='rachidiandetails')
     .square
       label
-        input(type='checkbox', value='douleur', name='cephaliquecheck')
+        input(type='checkbox', value='douleur', ng-model='cephaliquecheck')
         |       Céphalique
     .square
       label
         span details:
         br
-        textarea(name='cephaliquedetails')
+        textarea(ng-model='cephaliquedetails')
 
   // //5 Trouble du sommeil
   fieldset
@@ -173,31 +173,31 @@ form.form-labels-on-top(method='post', action='#')
       h1 5 Trouble du sommeil :
 
     h4     Souffrez vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
-    input(type='radio', name='sleepdisorder', value='oui')
+    input(type='radio', ng-model='sleepdisorder', value='oui')
     |  oui
-    input(type='radio', name='sleepdisorder', value='non')
+    input(type='radio', ng-model='sleepdisorder', value='non')
     |  non
     br
     .square
       label
         span Autres symptômes:
         br
-        textarea(name='othersymptoms')
+        textarea(ng-model='othersymptoms')
     .square
       label
         span Traitement:
         br
-        textarea(name='treatmenttextarea')
+        textarea(ng-model='treatmenttextarea')
     .square
       label
         span    Score PSQI :
         br
-        input(type='text', name='psqiscore', value='0')
+        input(type='text', ng-model='psqiscore', value='0')
     .square
       label
         span    Score ISI :
         br
-        input(type='text', name='isiscore', value='0')
+        input(type='text', ng-model='isiscore', value='0')
 
   // //6 Trouble oculaire
   fieldset
@@ -206,7 +206,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
       label
         br
-        textarea(name='eyedisorder')
+        textarea(ng-model='eyedisorder')
 
   // //7  Habitude novices
   fieldset
@@ -214,32 +214,32 @@ form.form-labels-on-top(method='post', action='#')
       h1 7 Habitude novices :
     .square
       label
-        input(type='checkbox', value='Onycophagie', name='onycophagie')
+        input(type='checkbox', value='Onycophagie', ng-model='onycophagie')
         |       Onycophagie
     .square
       label
-        input(type='checkbox', value='Mordillement', name='mordillement')
+        input(type='checkbox', value='Mordillement', ng-model='mordillement')
         |             Mordillement des lèvres/stylo/objets
     .square
       label
-        input(type='checkbox', value='Bruxisme d\'éveil', name='bruxisme')
+        input(type='checkbox', value='Bruxisme d\'éveil', ng-model='bruxisme')
         |       Bruxisme d'éveil
     .square
       label
-        input(type='checkbox', value='chewing-gum', name='chewing-gum')
+        input(type='checkbox', value='chewing-gum', ng-model='chewing-gum')
         |       Chewing-gum
     .square
       label
-        input(type='checkbox', value='tabac', name='tabac')
+        input(type='checkbox', value='tabac', ng-model='tabac')
         |       tabac
     .square
       label
-        input(type='checkbox', value='autres', name='others')
+        input(type='checkbox', value='autres', ng-model='others')
         |       Autres
     .square
       label
         br
-        textarea(name='novicehabits')
+        textarea(ng-model='novicehabits')
 
   // //8  DYSFONCTIONNEMENTS ORO-LINGAUX :
   fieldset
@@ -247,22 +247,22 @@ form.form-labels-on-top(method='post', action='#')
       h1 8 Dysfonctionnements oro-lingaux :
     .square
       label
-        input(type='checkbox', value='Dysfonctionnements orolinguaux',name='dysfonctionnements_orolinguaux')
+        input(type='checkbox', value='Dysfonctionnements orolinguaux',ng-model='dysfonctionnements_orolinguaux')
         |             Dysfonctionnements orolinguaux
     .square
       label
-        input(type='checkbox', value='Déglutition atypique',name='déglutition_atypique')
+        input(type='checkbox', value='Déglutition atypique',ng-model='déglutition_atypique')
         |             Déglutition atypique
     .square
       label
         span      Score de Friedman :
         br
-        input(type='text', name='friedmanscore', value='0')
+        input(type='text', ng-model='friedmanscore', value='0')
     .square
       label
         span      Score de Mallampati :
         br
-        input(type='text', name='mallampaticore', value='0')
+        input(type='text', ng-model='mallampaticore', value='0')
 
   // //9 TRAUMATISME :
   fieldset
@@ -271,7 +271,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
       label
         br
-        textarea(name='traume')
+        textarea(ng-model='traume')
 
   // //10 OBSERVATIONS COMPLÉMENTAIRES :
   fieldset
@@ -280,7 +280,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
       label
         br
-        textarea(name='observations')
+        textarea(ng-model='observations')
 
   // //12 Rapport incisifs
   // Revenir sur le post du radio qui est bug
@@ -288,46 +288,46 @@ form.form-labels-on-top(method='post', action='#')
     .form-title-row
       h1 12 Rapport incisifs :
     p Dent de reference :
-    input(type='radio', name='toothref', value='11')
+    input(type='radio', ng-model='toothref', value='11')
     |  11
-    input(type='radio', name='toothref', value='21')
+    input(type='radio', ng-model='toothref', value='21')
     |  21
-    input(type='radio', name='toothref', value='non')
+    input(type='radio', ng-model='toothref', value='non')
     |  autre
-    textarea(rows='1', cols='3', name='toothref')
+    textarea(rows='1', cols='3', ng-model='toothref')
 
     br
 
-    input(type='radio', name='toothref2', value='31')
+    input(type='radio', ng-model='toothref2', value='31')
     |  31
-    input(type='radio', name='toothref2', value='41')
+    input(type='radio', ng-model='toothref2', value='41')
     |  41
-    input(type='radio', name='toothref2', value='non')
+    input(type='radio', ng-model='toothref2', value='non')
     |  autre
-    input(type='radio', name='toothref2', value='non')
+    input(type='radio', ng-model='toothref2', value='non')
     |  autre
-    textarea(rows='1', cols='3', name='toothref2')
+    textarea(rows='1', cols='3', ng-model='toothref2')
     br
     |   Surplomb horizontal
-    input(type='text', name='horizontaloverhang', value='0')
+    input(type='text', ng-model='horizontaloverhang', value='0')
     |   mm
     label
-      input(type='checkbox', value='negatif', name='ifnegatif')
+      input(type='checkbox', value='negatif', ng-model='ifnegatif')
       |     Si négatif
     br
     |   Recouvrement vertical
-    input(type='text', name='isiscore', value='0')
+    input(type='text', ng-model='isiscore', value='0')
     |   mm
     label
-      input(type='checkbox', value='negatif', name='ifnegatif2')
+      input(type='checkbox', value='negatif', ng-model='ifnegatif2')
       |     Si négatif
     br
     |   Existe-t-il un décalage des milieux inter-incisifs ?
-    input(type='radio', name='decalage', value='oui')
+    input(type='radio', ng-model='decalage', value='oui')
     |  oui (
-    textarea(rows='1', cols='3', name='decalage')
+    textarea(rows='1', cols='3', ng-model='decalage')
     | mm)
-    input(type='radio', name='decalage', value='non')
+    input(type='radio', ng-model='decalage', value='non')
     |  non
     .square
 
@@ -360,45 +360,45 @@ form.form-labels-on-top(method='post', action='#')
     h4   Vous est-il arrivé d'être bloqué(e) ?
     .square
       label
-        input(type='checkbox', value='Bouche ouverte',name='open_mouth')
+        input(type='checkbox', value='Bouche ouverte',ng-model='open_mouth')
         |             Bouche ouverte
     .square
       label
-        input(type='checkbox', value='Bouche ferme',name='close_mouth')
+        input(type='checkbox', value='Bouche ferme',ng-model='close_mouth')
         |             Bouche ferme
     .square
       label
-        input(type='checkbox', value='ATM droit',name='ATM_right')
+        input(type='checkbox', value='ATM droit',ng-model='ATM_right')
         |             ATM droit
     .square
       label
-        input(type='checkbox', value='ATM gauche',name='ATM_left')
+        input(type='checkbox', value='ATM gauche',ng-model='ATM_left')
         |             ATM gauche
     .square
       label
         span  Frequence :
         br
-        input(type='text', name='frequency2')
+        input(type='text', ng-model='frequency2')
     .square
       label
         span  Dernier episode :
         br
-        input(type='text', name='lastepisode')
+        input(type='text', ng-model='lastepisode')
 
   //18 Elasticité articulaire
   fieldset
     .form-title-row
       h1 18 Elasticité articulaire :
     | ATM droite :
-    input(type='radio', name='ATMdroite', value='Souple')
+    input(type='radio', ng-model='ATMdroite', value='Souple')
     |  Souple
-    input(type='radio', name='ATMdroite', value='Raide')
+    input(type='radio', ng-model='ATMdroite', value='Raide')
     |  Raide
     br
     | ATM gauche :
-    input(type='radio', name='ATMgauche', value='Souple')
+    input(type='radio', ng-model='ATMgauche', value='Souple')
     |  Souple
-    input(type='radio', name='ATMgauche', value='Raide')
+    input(type='radio', ng-model='ATMgauche', value='Raide')
     |  Raide
     br
 
@@ -408,47 +408,47 @@ form.form-labels-on-top(method='post', action='#')
       br
       h1 19. Examen endo-buccal :
     h5     Contacts en OIM :
-    input(type='radio', name='oimcontact', value='equilibre')
+    input(type='radio', ng-model='oimcontact', value='equilibre')
     |  répartis de manière équilibrée
-    input(type='radio', name='oimcontact', value='')
-    textarea(rows='1', cols='25', name='oimcontact')
+    input(type='radio', ng-model='oimcontact', value='')
+    textarea(rows='1', cols='25', ng-model='oimcontact')
     br
     h4     La position dans laquelle vous fermez vos dents vous paraît-elle confortable ?
-    input(type='radio', name='closeteeth', value='oui')
+    input(type='radio', ng-model='closeteeth', value='oui')
     |  oui
-    input(type='radio', name='closeteeth', value='non')
+    input(type='radio', ng-model='closeteeth', value='non')
     |  non
     br
     br
     | Mastication unilatérale
-    input(type='radio', name='ATMdroite', value='Souple')
+    input(type='radio', ng-model='ATMdroite', value='Souple')
     |  oui
-    input(type='radio', name='ATMdroite', value='Raide')
+    input(type='radio', ng-model='ATMdroite', value='Raide')
     |  non
     br
     br
     .square
       |   Interférence(s) en latéralité droite :
-      input(type='text', name='interferenceright', value='')
+      input(type='text', ng-model='interferenceright', value='')
     .square
       |   Interférence(s) en latéralité gauche :
-      input(type='text', name='interferenceleft', value='')
+      input(type='text', ng-model='interferenceleft', value='')
     .square
       |   Interférence(s) en latéralité propulsion :
-      input(type='text', name='interferencepropulsion', value='')
+      input(type='text', ng-model='interferencepropulsion', value='')
     .square
       |   Prématurité(s) :
-      input(type='text', name='interferenceprematurite', value='')
+      input(type='text', ng-model='interferenceprematurite', value='')
     h5     Différentiel ORC-OIM :
     .square
       |   Dans le sens vertical :
-      input(type='text', name='verticalsens', value='')
+      input(type='text', ng-model='verticalsens', value='')
     .square
       |   Dans le sens  antéro-postérieur :
-      input(type='text', name='anteroposterieur', value='')
+      input(type='text', ng-model='anteroposterieur', value='')
     .square
       |   Dans le sens latéral :
-      input(type='text', name='lateralsens', value='')
+      input(type='text', ng-model='lateralsens', value='')
 
   // 20 Rapport incisifs
   fieldset
@@ -456,27 +456,27 @@ form.form-labels-on-top(method='post', action='#')
       h1 20. Usures Dentaire/bruxismes :
     .square
       |   Erosion(dents)
-      input(type='text', name='horizontaloverhang', value='0')
+      input(type='text', ng-model='horizontaloverhang', value='0')
 
       br
     .square
       |   Attrition(dents)
-      input(type='text', name='horizontaloverhang', value='0')
+      input(type='text', ng-model='horizontaloverhang', value='0')
 
       br
     .square
       |   Abrasion(dents)
-      input(type='text', name='abrasion', value='0')
+      input(type='text', ng-model='abrasion', value='0')
 
       br
     .square
       |   Bruxisme d'éveil(dents)
-      input(type='text', name='bruxismewake', value='0')
+      input(type='text', ng-model='bruxismewake', value='0')
 
       br
     .square
       |   Bruxisme de sommeil(Diagnostic )
-      select(ng-options='plause as plause for plause in dentalSheetCtrl.plause', ng-model='plause', name='plause')
+      select(ng-options='plause as plause for plause in dentalSheetCtrl.plause', ng-model='plause')
 
       br
 
@@ -484,7 +484,7 @@ form.form-labels-on-top(method='post', action='#')
       label
         | Information complémentaire
         br
-        textarea(name='incisifinfo')
+        textarea(ng-model='incisifinfo')
 
   // Diagnostic :
   fieldset
@@ -493,7 +493,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
       label
         br
-        textarea(name='diagnostic')
+        textarea(ng-model='diagnostic')
 
   // Diagnostic :
   fieldset
@@ -502,7 +502,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
       label
         br
-        textarea(name='treatmentplan')
+        textarea(ng-model='treatmentplan')
 
   .form-row
     button(type='submit') Submit Form
