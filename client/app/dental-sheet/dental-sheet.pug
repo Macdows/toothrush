@@ -36,6 +36,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='checkup')
 
   // //1 motif de la consultation
+  // ng-model : checkup2 pain
   fieldset
     .form-title-row
       h1 1 Motif de la consultation :
@@ -50,6 +51,7 @@ form.form-labels-on-top(method='post', action='#')
         |       Douleur
 
   // //2 evaluation de la douleur
+  // ng-model : firstpain EVAFond EVAPic startdate quality delay frequency startcircumstance modifyby  treatment dn4score
   fieldset
 
     .form-title-row
@@ -110,6 +112,7 @@ form.form-labels-on-top(method='post', action='#')
         input(type='text', ng-model='dn4score', value='0')
 
   // //3 Environement
+  // ng-model : family social professional anxiety deoression stress
   fieldset
     .form-title-row
       h1 3 Environement :
@@ -145,6 +148,7 @@ form.form-labels-on-top(method='post', action='#')
         input(type='text', ng-model='stress', value='0')
 
   // //4 Trouble de la posture
+  // ng-model : rachidiancheck rachidiandetails cephaliquecheck cephaliquedetails
   fieldset
     .form-title-row
       h1 4 Trouble de la posture :
@@ -168,6 +172,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='cephaliquedetails')
 
   // //5 Trouble du sommeil
+  // ng-model : sleepdisorder othersymptoms treatmenttextarea psqiscore isiscore
   fieldset
     .form-title-row
       h1 5 Trouble du sommeil :
@@ -200,6 +205,7 @@ form.form-labels-on-top(method='post', action='#')
         input(type='text', ng-model='isiscore', value='0')
 
   // //6 Trouble oculaire
+  // ng-model : eyedisorder
   fieldset
     .form-title-row
       h1 6 Trouble oculaire :
@@ -209,6 +215,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='eyedisorder')
 
   // //7  Habitude novices
+  // ng-model : onycophagie mordillement bruxisme chewing-gum tabac others novicehabits
   fieldset
     .form-title-row
       h1 7 Habitude novices :
@@ -242,6 +249,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='novicehabits')
 
   // //8  DYSFONCTIONNEMENTS ORO-LINGAUX :
+  // ng-model : dysfonctionnements_orolinguaux déglutition_atypique friedmanscore mallampaticore
   fieldset
     .form-title-row
       h1 8 Dysfonctionnements oro-lingaux :
@@ -265,6 +273,7 @@ form.form-labels-on-top(method='post', action='#')
         input(type='text', ng-model='mallampaticore', value='0')
 
   // //9 TRAUMATISME :
+  // ng-model : traume
   fieldset
     .form-title-row
       h1 9 Traumatisme :
@@ -274,6 +283,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='traume')
 
   // //10 OBSERVATIONS COMPLÉMENTAIRES :
+  // ng-model : observations
   fieldset
     .form-title-row
       h1 10 Observations complémentaires :
@@ -284,6 +294,7 @@ form.form-labels-on-top(method='post', action='#')
 
   // //12 Rapport incisifs
   // Revenir sur le post du radio qui est bug
+  // ng-model : toothref toothref2 horizontaloverhang ifnegatif ifnegatif2 decalage
   fieldset
     .form-title-row
       h1 12 Rapport incisifs :
@@ -332,6 +343,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
 
   // //14 TRAJET D'OUVERTURE/FERMETURE :
+  // ng-model :
   fieldset
     .form-title-row
       h1 14 Trajet d'ouverture fermeture :
@@ -354,6 +366,7 @@ form.form-labels-on-top(method='post', action='#')
     .square
 
   // //16 BLOCAGE ARTICULAIRE :
+  // ng-model : open_mouth close_mouth ATM_right ATM_left frequency2 lastepisode
   fieldset
     .form-title-row
       h1 16 Blocage articulaire :
@@ -386,6 +399,7 @@ form.form-labels-on-top(method='post', action='#')
         input(type='text', ng-model='lastepisode')
 
   //18 Elasticité articulaire
+  // ng-model : ATMdroite ATMgauche
   fieldset
     .form-title-row
       h1 18 Elasticité articulaire :
@@ -403,6 +417,7 @@ form.form-labels-on-top(method='post', action='#')
     br
 
   //19. Examen endo-buccal
+  // ng-model : oimcontact closeteeth ATMdroite2 interferenceright interferenceleft interferencepropulsion interferenceprematurite verticalsens anteroposterieur lateralsens
   fieldset
     .form-title-row
       br
@@ -421,9 +436,9 @@ form.form-labels-on-top(method='post', action='#')
     br
     br
     | Mastication unilatérale
-    input(type='radio', ng-model='ATMdroite', value='Souple')
+    input(type='radio', ng-model='ATMdroite2', value='Souple')
     |  oui
-    input(type='radio', ng-model='ATMdroite', value='Raide')
+    input(type='radio', ng-model='ATMdroite2', value='Raide')
     |  non
     br
     br
@@ -451,6 +466,7 @@ form.form-labels-on-top(method='post', action='#')
       input(type='text', ng-model='lateralsens', value='')
 
   // 20 Rapport incisifs
+  // ng-model : horizontaloverhang horizontaloverhang2 abrasion bruxismewake plause incisifinfo
   fieldset
     .form-title-row
       h1 20. Usures Dentaire/bruxismes :
@@ -461,7 +477,7 @@ form.form-labels-on-top(method='post', action='#')
       br
     .square
       |   Attrition(dents)
-      input(type='text', ng-model='horizontaloverhang', value='0')
+      input(type='text', ng-model='horizontaloverhang2', value='0')
 
       br
     .square
@@ -487,6 +503,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='incisifinfo')
 
   // Diagnostic :
+  // ng-model : diagnostic
   fieldset
     .form-title-row
       h1 Diagnostic :
@@ -496,6 +513,7 @@ form.form-labels-on-top(method='post', action='#')
         textarea(ng-model='diagnostic')
 
   // Diagnostic :
+  // ng-model : treatmentplan
   fieldset
     .form-title-row
       h1 Plan de traitement :
