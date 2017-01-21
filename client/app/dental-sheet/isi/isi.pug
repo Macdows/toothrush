@@ -1,26 +1,11 @@
-form.form-labels-on-top(method='post', action='#')
+.form-labels-on-top()
   .form-title-row
     h1 Index de Sévérité de l'Insomnie (ISI)
-  .square
+  .square(ng-repeat='item in ::isiCtrl.headers')
     label
-      span Nom :
+      span {{item.label}}
       br
-      input(type='text', name='lastname')
-  .square
-    label
-      span Prénom :
-      br
-      input(type='text', name='firstname')
-  .square
-    label
-      span Date de naissance :
-      br
-      input(type='text', name='birthdate')
-  .square
-    label
-      span Date de ce jour :
-      br
-      input(type='text', name='date')
+      input(type='text', ng-model='datas[item.key]')
   p.description
     | Pour chacune des questions, veuillez cocher celle qui correspond le plus fidèlement à votre sommeil au cours du dernier mois.
     br
@@ -33,7 +18,7 @@ form.form-labels-on-top(method='post', action='#')
     .form-radio-buttons
       div
         label(ng-repeat='option in question.scale')
-          input(type='radio', name='radio')
+          input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
           span {{option}}
 
   .form-row
@@ -42,8 +27,8 @@ form.form-labels-on-top(method='post', action='#')
     .form-radio-buttons
       div
         label
-          input(type='text', name='radio')
+          input(type='text', ng-model='datas.occurences')
           span nuits par semaine
 
   .form-row
-    button(type='submit') Calculer le score
+    button(ng-click='writeRecord()') Calculer le score

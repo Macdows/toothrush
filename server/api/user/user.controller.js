@@ -78,15 +78,24 @@ export function destroy(req, res) {
 /**
  * Change a users password
  */
-export function changePassword(req, res) {
+export function updateUser(req, res) {
+  // if (!req.body) {
+  //   res.status(400).end();
+  // }
   var userId = req.user._id;
+  var newName = String(req.body.username);
   var oldPass = String(req.body.oldPassword);
   var newPass = String(req.body.newPassword);
 
   return User.findById(userId).exec()
     .then(user => {
       if(user.authenticate(oldPass)) {
-        user.password = newPass;
+        if(newName) {
+          user.name = newName;
+        }
+        if(newPass) {
+          user.password = newPass;
+        }
         return user.save()
           .then(() => {
             res.status(204).end();

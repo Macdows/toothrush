@@ -1,13 +1,16 @@
 'use strict';
 // @flow
-interface User {
+interface _User {
+  username: string;
   oldPassword: string;
   newPassword: string;
   confirmPassword: string;
 }
 
 export default class SettingsController {
-  user: User = {
+  userId = null;
+  user: _User = {
+    username: '',
     oldPassword: '',
     newPassword: '',
     confirmPassword: ''
@@ -18,17 +21,27 @@ export default class SettingsController {
   Auth;
 
   /*@ngInject*/
-  constructor(Auth) {
+  constructor(Auth, $stateParams, User) {
     this.Auth = Auth;
+    if($stateParams.id) {
+      var testUser = User.query({_id: $stateParams.id});
+      console.log(testUser);
+        // .exec()
+        // .then(function(user) {
+        //   console.log(user);
+        //   this.user.username = user.name;
+        //   this.userId = $stateParams.id
+        // });
+    }
   }
 
-  changePassword(form) {
+  updateUser(form) {
     this.submitted = true;
 
     if(form.$valid) {
-      this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
+      this.Auth.updateUser(this.userId, this.user.username, this.user.oldPassword, this.user.newPassword)
         .then(() => {
-          this.message = 'Password successfully changed.';
+          this.message = 'Informations successfully changed.';
         })
         .catch(() => {
           form.password.$setValidity('mongoose', false);

@@ -28,8 +28,15 @@ export default function routes($stateProvider) {
         controller: 'SignupController',
         controllerAs: 'vm'
       })
-      .state('settings', {
+      .state('settings-me', {
         url: '/settings',
+        template: require('./settings/settings.pug'),
+        controller: 'SettingsController',
+        controllerAs: 'vm',
+        authenticate: true
+      })
+      .state('settings-user', {
+        url: '/settings/:id',
         template: require('./settings/settings.pug'),
         controller: 'SettingsController',
         controllerAs: 'vm',

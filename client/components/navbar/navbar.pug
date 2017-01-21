@@ -33,7 +33,7 @@ div.navbar.navbar-default.navbar-static-top
           p.navbar-text Hello {{ $ctrl.getCurrentUser().name }}
 
         li(ng-show='$ctrl.isLoggedIn()', ui-sref-active='active')
-          a(ui-sref='settings')
+          a(ui-sref='settings-me')
             span.glyphicon.glyphicon-cog
 
         li(ng-show='$ctrl.isLoggedIn()')

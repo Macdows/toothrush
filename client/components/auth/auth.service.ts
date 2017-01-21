@@ -88,8 +88,9 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
      * @param  {Function} callback    - function(error, user)
      * @return {Promise}
      */
-    changePassword(oldPassword, newPassword, callback?: Function) {
-      return User.changePassword({ id: currentUser._id }, { oldPassword, newPassword }, function() {
+    updateUser(userId, username, oldPassword, newPassword, callback?: Function) {
+      var idToBeUpdated = userId || currentUser._id;
+      return User.updateUser({ id: idToBeUpdated }, { username, oldPassword, newPassword }, function() {
         return safeCb(callback)(null);
       }, function(err) {
         return safeCb(callback)(err);

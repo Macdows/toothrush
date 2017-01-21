@@ -7,9 +7,29 @@ import routes from './edas.routes';
 
 export class EdasComponent {
   /*@ngInject*/
+  headers = []
   formContent = [];
   scale = [];
   constructor() {
+    this.headers = [
+      {
+        label: 'Nom :',
+        key: 'lastname'
+      },
+      {
+        label: 'Prénom :',
+        key: 'firstname'
+      },
+      {
+        label: 'Date de naissance :',
+        key: 'birthdate'
+      },
+      {
+        label: 'Date du jour :',
+        key: 'date'
+      }
+    ]
+
     this.formContent = [
       '1. J\'ai trouvé difficile de décompresser',
       '2. J\'ai été conscient(e) d\'avoir la bouche sèche',

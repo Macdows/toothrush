@@ -10,6 +10,7 @@ const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
 // const ngMessages = require('angular-messages');
 // import ngValidationMatch from 'angular-validation-match';
+const firebase = require('firebase');
 
 
 import {routeConfig} from './app.config';
@@ -61,6 +62,22 @@ angular.module('toothrushApp', [
         }
       });
     });
+
+
+
+    // var adapter = new DSLocalStorageAdapter();
+    //
+    // var store = new JSData.DS();
+    // store.registerAdapter('localstorage', adapter, { default: true });
+
+    var config = {
+      apiKey: "AIzaSyAbsXdWriNDCgDkJroeX0Ia-WTZ-B090hg",
+      authDomain: "toothrush-5453a.firebaseapp.com",
+      databaseURL: "https://toothrush-5453a.firebaseio.com",
+      storageBucket: "toothrush-5453a.appspot.com",
+      messagingSenderId: "143005766787"
+    };
+    firebase.initializeApp(config);
   });
 
 angular
