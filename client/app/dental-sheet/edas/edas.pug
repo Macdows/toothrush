@@ -1,16 +1,14 @@
-form.form-labels-on-top(method='post', action='#')
+.form-labels-on-top
   .form-title-row
     h1 Echelle de dépression, d'anxiété et de stress (EDAS21)
   .square(ng-repeat='item in ::edasCtrl.headers')
     label
       span {{item.label}}
       br
-      input(type='text', name='{{key}}')
+      input(type='text', ng-model='datas[item.key]')
   p.description
     | Veuillez lire chaque énoncé et indiquer lequel correspond le mieux à votre expérience au cours de la dernière semaine.
-    br
     |  Indiquez votre choix en encerclant le chiffre qui y correspond (soit 0,1, 2 ou 3). Il n’y a pas de bonne ou de mauvaise réponse.
-    br
     |  Ne vous attardez pas trop longuement sur les énoncés. L’échelle de notation est la suivante :
     br
     |  0 ne s’applique pas du tout à moi
@@ -24,13 +22,13 @@ form.form-labels-on-top(method='post', action='#')
 
   .form-row(ng-repeat="question in edasCtrl.formContent")
     label
-      span {{question}}
+      span {{question.label}}
     .form-radio-buttons
       div
         label(ng-repeat="option in edasCtrl.scale")
-          input(type='radio', name='radio')
+          input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
           span {{option}}
 
 
   .form-row
-    button(type='submit') Submit Form
+    button(ng-click='writeRecord()') Submit Form

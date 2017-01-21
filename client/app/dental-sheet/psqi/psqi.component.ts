@@ -32,11 +32,11 @@ export class PsqiComponent {
 
     $scope.writeRecord = function() {
       firebase.database().ref('records/psqi').push({
-        patientId: $scope.datas.patientId || null,
-        lastname: $scope.datas.lastname || null,
-        firstname: $scope.datas.firstname || null,
-        birthdate: $scope.datas.birthdate || null,
-        date: $scope.datas.date || null,
+        patientId: $scope.datas.patientId,
+        lastname: $scope.datas.lastname,
+        firstname: $scope.datas.firstname,
+        birthdate: $scope.datas.birthdate,
+        date: $scope.datas.date,
         bedtime: $scope.datas.bedtime || null,
         fallAsleepTime: $scope.datas.fallAsleepTime || null,
         waketime: $scope.datas.waketime || null,

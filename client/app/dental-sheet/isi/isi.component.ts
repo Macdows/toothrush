@@ -35,11 +35,11 @@ export class IsiComponent {
 
     $scope.writeRecord = function() {
       firebase.database().ref('records/isi').push({
-        patientId: $scope.datas.patientId || null,
-        lastname: $scope.datas.lastname || null,
-        firstname: $scope.datas.firstname || null,
-        birthdate: $scope.datas.birthdate || null,
-        date: $scope.datas.date || null,
+        patientId: $scope.datas.patientId,
+        lastname: $scope.datas.lastname,
+        firstname: $scope.datas.firstname,
+        birthdate: $scope.datas.birthdate,
+        date: $scope.datas.date,
         fallingAsleep: $scope.datas.fallingAsleep || null,
         stayingAsleep: $scope.datas.stayingAsleep || null,
         earlyWakeUp: $scope.datas.earlyWakeUp || null,

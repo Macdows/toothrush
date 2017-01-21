@@ -1,7 +1,7 @@
 'use strict';
 const angular = require('angular');
-
 const uiRouter = require('angular-ui-router');
+const firebase = require('firebase');
 
 import routes from './edas.routes';
 
@@ -10,8 +10,59 @@ export class EdasComponent {
   headers = []
   formContent = [];
   scale = [];
-  constructor() {
+  constructor($scope, $state) {
+    var database = firebase.database();
+
+    $scope.datas = {}
+
+    if($state.params.id) {
+      firebase.database()
+        .ref('records/edas/' + $state.params.id)
+        .once('value')
+        .then(function(datas) {
+          $scope.datas = datas.val()
+        });
+    }
+
+    console.log($scope.datas)
+
+    $scope.writeRecord = function() {
+      firebase.database().ref('records/edas').push({
+        patientId: $scope.datas.patientId,
+        lastname: $scope.datas.lastname,
+        firstname: $scope.datas.firstname,
+        birthdate: $scope.datas.birthdate,
+        date: $scope.datas.date,
+        decompress: $scope.datas.decompress || null,
+        dryMouth: $scope.datas.dryMouth || null,
+        noPositiveEmotion: $scope.datas.noPositiveEmotion || null,
+        breathing: $scope.datas.breathing || null,
+        activities: $scope.datas.activities || null,
+        overreact: $scope.datas.overreact || null,
+        shaking: $scope.datas.shaking || null,
+        nervous: $scope.datas.nervous || null,
+        worried: $scope.datas.worried || null,
+        noPleasure: $scope.datas.noPleasure || null,
+        agitated: $scope.datas.agitated || null,
+        troubleRelaxing: $scope.datas.troubleRelaxing || null,
+        depressed: $scope.datas.depressed || null,
+        delayed: $scope.datas.delayed || null,
+        panic: $scope.datas.panic || null,
+        enthusiastic: $scope.datas.enthusiastic || null,
+        worthless: $scope.datas.worthless || null,
+        irritable: $scope.datas.irritable || null,
+        cardio: $scope.datas.cardio || null,
+        scared: $scope.datas.scared || null,
+        meaningless: $scope.datas.meaningless || null
+
+      });
+    }
+
     this.headers = [
+      {
+        label: 'Identifiant du patient :',
+        key: 'patientId'
+      },
       {
         label: 'Nom :',
         key: 'lastname'
@@ -31,27 +82,90 @@ export class EdasComponent {
     ]
 
     this.formContent = [
-      '1. J\'ai trouvé difficile de décompresser',
-      '2. J\'ai été conscient(e) d\'avoir la bouche sèche',
-      '3. J\'ai eu l\'impression de ne pas pouvoir ressentir d\'émotion positive.',
-      '4. J\'ai eu de la difficulté à respirer (par exemple, respirations excessivement rapides, essoufflement sans effort physique).',
-      '5. J\'ai eu de la difficulté à initier de nouvelles activités.',
-      '6. J\'ai eu tendance à réagir de façon exagérée.',
-      '7. J\'ai eu des tremblements (par exemple, des mains).',
-      '8. J\'ai eu l\'impression de dépenser beaucoup d\'énergie nerveuse.',
-      '9. Je me suis inquiété(e) en pensant à des situations où je pourrais paniquer et faire de moi un(e) idiot(e).',
-      '10. J\'ai eu le sentiment de ne rien envisager avec plaisir.',
-      '11. Je me suis aperçu(e) que je devenais agité(e).',
-      '12. J\'ai eu de la difficulté à me détendre.',
-      '13. Je me suis senti(e) triste et déprimé(e).',
-      '14. Je me suis aperçu(e) que je devenais impatient(e) lorsque j\'étais retardé(e) de quelque façon que ce soit (par exemple dans les ascenseurs, aux feux de circulation, lorsque je devais attendre).',
-      '15. J\'ai eu le sentiment d\'être presque pris(e) de panique.',
-      '16. J\'ai été incapable de me sentir enthousiaste au sujet de quoi que ce soit.',
-      '17. J\'ai eu le sentiment de ne pas valoir grand chose comme personne.',
-      '18. Je me suis aperçu(e) que j’étais très irritable.',
-      '19. J\’ai été conscient(e) des palpitations de mon coeur en l’absence d’effort physique (sensation d’augmentation de mon rythme cardiaque ou l’impression que mon cœur venait de sauter).',
-      '20. J\’ai eu peur sans bonne raison.',
-      '21. J\’ai eu l’impression que la vie n’avait pas de sens.',
+      {
+        label: '1. J\'ai trouvé difficile de décompresser',
+        key: 'decompress'
+      },
+      {
+        label: '2. J\'ai été conscient(e) d\'avoir la bouche sèche',
+        key: 'dryMouth'
+      },
+      {
+        label: '3. J\'ai eu l\'impression de ne pas pouvoir ressentir d\'émotion positive.',
+        key: 'noPositiveEmotion'
+      },
+      {
+        label: '4. J\'ai eu de la difficulté à respirer (par exemple, respirations excessivement rapides, essoufflement sans effort physique).',
+        key: 'breathing'
+      },
+      {
+        label: '5. J\'ai eu de la difficulté à initier de nouvelles activités.',
+        key: 'activities'
+      },
+      {
+        label: '6. J\'ai eu tendance à réagir de façon exagérée.',
+        key: 'overreact'
+      },
+      {
+        label: '7. J\'ai eu des tremblements (par exemple, des mains).',
+        key: 'shaking'
+      },
+      {
+        label: '8. J\'ai eu l\'impression de dépenser beaucoup d\'énergie nerveuse.',
+        key: 'nervous'
+      },
+      {
+        label: '9. Je me suis inquiété(e) en pensant à des situations où je pourrais paniquer et faire de moi un(e) idiot(e).',
+        key: 'worried'
+      },
+      {
+        label: '10. J\'ai eu le sentiment de ne rien envisager avec plaisir.',
+        key: 'noPleasure'
+      },
+      {
+        label: '11. Je me suis aperçu(e) que je devenais agité(e).',
+        key: 'agitated'
+      },
+      {
+        label: '12. J\'ai eu de la difficulté à me détendre.',
+        key: 'troubleRelaxing'
+      },
+      {
+        label: '13. Je me suis senti(e) triste et déprimé(e).',
+        key: 'depressed'
+      },
+      {
+        label: '14. Je me suis aperçu(e) que je devenais impatient(e) lorsque j\'étais retardé(e) de quelque façon que ce soit (par exemple dans les ascenseurs, aux feux de circulation, lorsque je devais attendre).',
+        key: 'delayed'
+      },
+      {
+        label: '15. J\'ai eu le sentiment d\'être presque pris(e) de panique.',
+        key: 'panic'
+      },
+      {
+        label: '16. J\'ai été incapable de me sentir enthousiaste au sujet de quoi que ce soit.',
+        key: 'enthusiastic'
+      },
+      {
+        label: '17. J\'ai eu le sentiment de ne pas valoir grand chose comme personne.',
+        key: 'worthless'
+      },
+      {
+        label: '18. Je me suis aperçu(e) que j’étais très irritable.',
+        key: 'irritable'
+      },
+      {
+        label: '19. J\’ai été conscient(e) des palpitations de mon coeur en l’absence d’effort physique (sensation d’augmentation de mon rythme cardiaque ou l’impression que mon cœur venait de sauter).',
+        key: 'cardio'
+      },
+      {
+        label: '20. J\’ai eu peur sans bonne raison.',
+        key: 'scared'
+      },
+      {
+        label: '21. J\’ai eu l’impression que la vie n’avait pas de sens.',
+        key: 'meaningless'
+      }
     ];
 
     this.scale = [0, 1, 2, 3];
