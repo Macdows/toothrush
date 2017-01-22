@@ -1,5 +1,31 @@
 html{
     background-color: #f3f3f3;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.vtable tr:nth-child(odd)
+{
+    background: #e6e6e6;
+}
+table
+{
+  width : 100%;
+  border-collapse: collapse;
+}
+
+div.item_title
+{
+  text-align: center;
+}
+
+th
+{
+  text-align: center;
+}
+
+td.cell_center
+{
+  text-align: center;
 }
 
 .form-labels-on-top{

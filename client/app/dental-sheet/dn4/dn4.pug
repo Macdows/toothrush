@@ -1,0 +1,35 @@
+table
+  h1 Questionnaire DN4
+  tr
+    label
+      | Nom :
+      br
+      input(type='text', name='lastname')
+    label
+      | Prénom :
+      br
+      input(type='text', name='firstname')
+  tr
+    label
+      | Date de naissance :
+      br
+      input(type='text', name='birthdate')
+    label
+      | Date de ce jour :
+      br
+      input(type='text', name='date')
+
+table
+  tr(ng-repeat="objet in dn4Ctrl.question")
+    td {{objet.label}}
+    td(ng-repeat="option in dn4Ctrl.scale", ng-if='objet.showInput')
+      input(
+        type='radio',
+        name='{{objet.model}}',
+        ng-checked='(option)'
+      )
+      | {{option}}
+
+
+.form-row
+  button(type='submit') Submit Form
