@@ -1,14 +1,14 @@
 'use strict';
 
-describe('Component: DentalSheetComponent', function() {
+describe('Component: GeneralComponent', function() {
   // load the controller's module
-  beforeEach(module('toothrushApp.dental-sheet'));
+  beforeEach(module('toothrushApp.general'));
 
-  var DentalSheetComponent;
+  var GeneralComponent;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($componentController) {
-    DentalSheetComponent = $componentController('dental-sheet', {});
+    GeneralComponent = $componentController('general', {});
   }));
 
   it('should ...', function() {

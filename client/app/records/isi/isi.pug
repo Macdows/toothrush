@@ -1,18 +1,21 @@
-.form-labels-on-top
+img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
+
+.form-labels-on-top(ng-show="!loading")
   .form-title-row
     h1 Index de Sévérité de l'Insomnie (ISI)
-  .square(ng-repeat='item in ::isiCtrl.headers')
+  div(ng-repeat='item in headers' ng-class='item.class')
     label
       span {{item.label}}
       br
       input(type='text', ng-model='datas[item.key]')
-  p.description
-    | Pour chacune des questions, veuillez cocher celle qui correspond le plus fidèlement à votre sommeil au cours du dernier mois.
-    br
-    br
-    | Pour les trois premières questions, veuillez estimer la SÉVÉRITÉ de vos difficultés de sommeil.
+  .clearfix
+    p.description
+      | Pour chacune des questions, veuillez cocher celle qui correspond le plus fidèlement à votre sommeil au cours du dernier mois.
+      br
+      br
+      | Pour les trois premières questions, veuillez estimer la SÉVÉRITÉ de vos difficultés de sommeil.
 
-  .form-row(ng-repeat='question in ::isiCtrl.formContent')
+  .form-row(ng-repeat='question in formContent')
     label
       span {{question.label}}
     .form-radio-buttons
@@ -27,7 +30,7 @@
     .form-radio-buttons
       div
         label
-          input(type='text', ng-model='datas.occurences')
+          input(type='number', ng-model='datas.occurences')
           span nuits par semaine
 
   .form-row

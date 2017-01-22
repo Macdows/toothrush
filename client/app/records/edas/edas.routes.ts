@@ -4,11 +4,11 @@ export default function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('edas', {
-      url: '/dental-sheet/edas',
+      url: '/fiches-cliniques/edas',
       template: '<edas></edas>'
     })
     .state('edas-id', {
-      url: '/dental-sheet/edas/:id',
+      url: '/fiches-cliniques/edas/:id',
       template: '<edas></edas>'
     });
 }

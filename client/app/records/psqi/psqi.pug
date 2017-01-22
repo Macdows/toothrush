@@ -1,15 +1,18 @@
-.form-labels-on-top
+img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
+
+.form-labels-on-top(ng-show="!loading")
   .form-title-row
     h1 Index de Qualité du Sommeil de Pittsburgh (PSQI)
-  .square(ng-repeat='item in ::psqiCtrl.headers')
+  div(ng-repeat='item in headers' ng-class='item.class')
     label
       span {{item.label}}
       br
       input(type='text', ng-model='datas[item.key]')
-  p.description
-    | Les questions suivantes ont trait à vos habitudes de sommeil peandant le dernier mois seulement. Vos réponses doivent indiquer ce qui correspond aux expériences que vous avez eues pendant la majorité des jours et des nuits au cours du dernier mois. Répondez à toutes les questions.
+  .clearfix
+    p.description
+      | Les questions suivantes ont trait à vos habitudes de sommeil peandant le dernier mois seulement. Vos réponses doivent indiquer ce qui correspond aux expériences que vous avez eues pendant la majorité des jours et des nuits au cours du dernier mois. Répondez à toutes les questions.
 
-  .form-row(ng-repeat='question in ::psqiCtrl.textInputs')
+  .form-row(ng-repeat='question in textInputs')
     label
       span {{question.label}}
     .form-radio-buttons
@@ -25,10 +28,10 @@
     label
       span 5. Au cours du mois dernier, avec quelle fréquence avez-vous eu des troubles de sommeil car...
     .form-radio-buttons
-      div.sub-question(ng-repeat='question in ::psqiCtrl.radioTable1')
+      div.sub-question(ng-repeat='question in radioTable1')
         span {{question.label}}
         .radio-container
-          label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
+          label.fixed-width(ng-repeat='option in history')
             input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
             span {{option}}
       div.sub-question
@@ -39,11 +42,11 @@
       div.sub-question
         span Indiquez la fréquence des troubles du sommeil pour ces raisons
         .radio-container
-          label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
+          label.fixed-width(ng-repeat='option in history')
             input(type='radio', ng-model='datas.frequency', name='{{$parent.$index}}', value='{{$index}}')
             span {{option}}
 
-  .form-row(ng-repeat='question in ::psqiCtrl.radioInputs')
+  .form-row(ng-repeat='question in radioInputs')
     label
       span {{question.label}}
     .form-radio-buttons
@@ -56,10 +59,10 @@
     label
       span 11. Si vous avez un camarade de chambre ou un conjoint, demandez-lui combien de fois le mois dernier vous avez présenté :
     .form-radio-buttons
-      div.sub-question(ng-repeat='question in ::psqiCtrl.radioTable2')
+      div.sub-question(ng-repeat='question in radioTable2')
         span {{question.label}}
         .radio-container
-          label.fixed-width(ng-repeat='option in ::psqiCtrl.history')
+          label.fixed-width(ng-repeat='option in history')
             input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
             span {{option}}
 

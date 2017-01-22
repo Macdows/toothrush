@@ -4,11 +4,11 @@ export default function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('isi', {
-      url: '/dental-sheet/isi',
+      url: '/fiches-cliniques/isi',
       template: '<isi></isi>'
     })
     .state('isi-id', {
-      url: '/dental-sheet/isi/:id',
+      url: '/fiches-cliniques/isi/:id',
       template: '<isi></isi>'
     });
 }

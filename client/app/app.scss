@@ -26,6 +26,11 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @import 'dental-sheet/isi/isi';
 @import 'dental-sheet/psqi/psqi';
 @import 'main/main';
+@import 'records/edas/edas';
+@import 'records/general/general';
+@import 'records/isi/isi';
+@import 'records/psqi/psqi';
+@import 'records/records';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
 /* endinject */

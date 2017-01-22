@@ -99,21 +99,65 @@ html{
     float: left;
     margin-bottom: 22px;
 
-    label input {
-      margin-top: 12px;
-    }
+    label {
+      input, select {
+        margin-top: 12px;
+        width: 240px;
+      }
 
-    label select {
-      margin-top: 12px;
-      width: 265px;
-    }
-
-    label textarea {
-      margin-top: 12px;
-      width: 265px;
+      textarea {
+        margin-top: 12px;
+        width: 240px;
+        min-height: 45px
+      }
     }
   }
+
+  .col3 {
+    width: 25%;
+    // float: left;
+    display: inline-block;
+    margin-bottom: 22px;
+
+    label {
+      input {
+        width: 120px;
+      }
+    }
+  }
+
+  .middle{
+    margin-bottom: 22px;
+
+    label {
+      & {
+        width: 100%;
+      }
+
+      select {
+        margin-top: 12px;
+        width: 240px;
+      }
+      textarea {
+        margin-top: 12px;
+        width: 100%;
+        height: 100px;
+      }
+      input[type='checkbox']{
+        margin-left: 5px;
+        padding-top: 1px;
+      }
+      input{
+        margin-top: 12px;
+      }
+    }
+  }
+
+  .centered-options {
+    text-align: center !important;
+  }
 }
+
 
 .form-labels-on-top p.description {
   font-weight: normal;
@@ -121,7 +165,29 @@ html{
   margin-bottom: 22px;
 }
 
-/*	Making the form responsive. Remove this media query
+.left {
+  text-align: left;
+}
+
+.input-small {
+  width: 40px !important;
+}
+
+.inline {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+img.loading {
+  margin-left: 50%;
+  width: 35px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/* Making the form responsive. Remove this media query
     if you don't need the form to work on mobile devices. */
 
 @media (max-width: 600px) {

@@ -4,11 +4,11 @@ export default function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('psqi', {
-      url: '/dental-sheet/psqi',
+      url: '/fiches-cliniques/psqi',
       template: '<psqi></psqi>'
     })
     .state('psqi-id', {
-      url: '/dental-sheet/psqi/:id',
+      url: '/fiches-cliniques/psqi/:id',
       template: '<psqi></psqi>'
     });
 }
