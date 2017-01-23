@@ -8,8 +8,8 @@ import routes from './isi.routes';
 
 export class IsiComponent {
   /*@ngInject*/
-  constructor($scope, $state) {
-    var database = firebase.database();
+  constructor($scope, $state, Auth) {
+    
     var pain = ['Aucune', 'Légère', 'Moyenne', 'Élevée', 'Extrême'];
     var satisfaction = ['Très satisfait(e)', 'Saitsfait(e)', 'Neutre', 'Insatisfait(e)', 'Très insatisfait(e)'];
     var trouble = ['Aucunement', 'Légèrement', 'Moyennement', 'Très',  'Extrêmement'];
@@ -25,6 +25,7 @@ export class IsiComponent {
         .then(function(datas) {
           $scope.writeRecord = function() {
             firebase.database().ref('records/isi/' + $state.params.id).set({
+              userId: datas.val().userId,
               patientId: $scope.datas.patientId,
               birthdate: $scope.datas.birthdate,
               date: $scope.datas.date,
@@ -52,31 +53,35 @@ export class IsiComponent {
           });
         });
     } else {
-      $scope.datas = {}
-      $scope.writeRecord = function() {
-        firebase.database().ref('records/isi').push({
-          patientId: $scope.datas.patientId,
-          birthdate: $scope.datas.birthdate,
-          date: $scope.datas.date,
-          fallingAsleep: $scope.datas.fallingAsleep || null,
-          stayingAsleep: $scope.datas.stayingAsleep || null,
-          earlyWakeUp: $scope.datas.earlyWakeUp || null,
-          satisfaction: $scope.datas.satisfaction || null,
-          impact: $scope.datas.impact || null,
-          appearance: $scope.datas.appearance || null,
-          stress: $scope.datas.stress || null,
-          quality: $scope.datas.quality || null,
-          morningState: $scope.datas.morningState || null,
-          qol: $scope.datas.qol || null,
-          tiredness: $scope.datas.tiredness || null,
-          concentration: $scope.datas.concentration || null,
-          relationships: $scope.datas.relationships || null,
-          mood: $scope.datas.mood || null,
-          activities: $scope.datas.activities || null,
-          occurences: $scope.datas.occurences || null
-        });
-      }
-      $scope.loading = false;
+      Auth.getCurrentUser().then(function(result) {
+        var userId = result._id;
+        $scope.datas = {}
+        $scope.writeRecord = function() {
+          firebase.database().ref('records/isi').push({
+            userId: userId,
+            patientId: $scope.datas.patientId,
+            birthdate: $scope.datas.birthdate,
+            date: $scope.datas.date,
+            fallingAsleep: $scope.datas.fallingAsleep || null,
+            stayingAsleep: $scope.datas.stayingAsleep || null,
+            earlyWakeUp: $scope.datas.earlyWakeUp || null,
+            satisfaction: $scope.datas.satisfaction || null,
+            impact: $scope.datas.impact || null,
+            appearance: $scope.datas.appearance || null,
+            stress: $scope.datas.stress || null,
+            quality: $scope.datas.quality || null,
+            morningState: $scope.datas.morningState || null,
+            qol: $scope.datas.qol || null,
+            tiredness: $scope.datas.tiredness || null,
+            concentration: $scope.datas.concentration || null,
+            relationships: $scope.datas.relationships || null,
+            mood: $scope.datas.mood || null,
+            activities: $scope.datas.activities || null,
+            occurences: $scope.datas.occurences || null
+          });
+        }
+        $scope.loading = false;
+      });
     }
 
     $scope.headers = [

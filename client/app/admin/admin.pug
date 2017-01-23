@@ -6,8 +6,8 @@
       strong {{user.name}}
       br
       span.text-muted {{user.email}}
-      .pull-right
-        a.actions(ui-sref='settings-user({id: user._id})')
+      .pull-right.actions
+        .btn.btn-lg(ui-sref='settings-user({id: user._id})')
           span.glyphicon.glyphicon-cog
-        a.actions.trash(ng-click='admin.delete(user)')
+        .btn.btn-lg.trash-btn(ng-click='admin.delete(user)')
           span.glyphicon.glyphicon-trash

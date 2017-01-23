@@ -1,0 +1,26 @@
+img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
+
+.form-labels-on-top(ng-show="!loading")
+  .form-title-row
+    h1 Echelle de dépression, d'anxiété et de stress (EDAS21)
+  div(ng-repeat='item in headers' ng-class='item.class')
+    label
+      span {{item.label}}
+      br
+      input(type='text', ng-model='datas[item.key]')
+  .clearfix
+
+  div(ng-repeat='question in formContent')
+    .form-title-row.left(ng-if='!question.key')
+      span {{question.label}}
+    .form-row(ng-if='question.key')
+      label
+        span {{question.label}}
+      .form-radio-buttons
+        div
+          label(ng-repeat='option in scale')
+            input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
+            span {{option}}
+
+  .form-row
+    button(ng-click='writeRecord()') Calculer le score

@@ -21,11 +21,8 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 /* inject:scss */
 @import 'admin/admin';
 @import 'contact/contact';
-@import 'dental-sheet/dental-sheet';
-@import 'dental-sheet/edas/edas';
-@import 'dental-sheet/isi/isi';
-@import 'dental-sheet/psqi/psqi';
 @import 'main/main';
+@import 'records/dn4/dn4';
 @import 'records/edas/edas';
 @import 'records/general/general';
 @import 'records/isi/isi';

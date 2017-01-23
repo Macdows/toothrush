@@ -17,24 +17,24 @@ div.navbar.navbar-default.navbar-static-top
           a(ui-sref='admin') Admin
 
         li(ui-sref-active='active')
-          a(ui-sref='dental-sheet') Dental sheet
+          a(ui-sref='records') Fiches cliniques
 
         li(ui-sref-active='active')
           a(ui-sref='contact') Contact
 
       ul.nav.navbar-nav.navbar-right
         li(ng-hide='$ctrl.isLoggedIn()', ui-sref-active='active')
-          a(ui-sref='signup') Sign up
+          a(ui-sref='signup') S'inscrire
 
         li(ng-hide='$ctrl.isLoggedIn()', ui-sref-active='active')
-          a(ui-sref='login') Login
+          a(ui-sref='login') Connexion
 
         li(ng-show='$ctrl.isLoggedIn()')
-          p.navbar-text Hello {{ $ctrl.getCurrentUser().name }}
+          p.navbar-text Bonjour {{ $ctrl.getCurrentUser().name }}
 
         li(ng-show='$ctrl.isLoggedIn()', ui-sref-active='active')
           a(ui-sref='settings-me')
             span.glyphicon.glyphicon-cog
 
         li(ng-show='$ctrl.isLoggedIn()')
-          a(ui-sref='logout') Logout
+          a(ui-sref='logout') Déconnexion

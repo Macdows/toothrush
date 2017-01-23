@@ -7,9 +7,8 @@ import routes from './psqi.routes';
 
 export class PsqiComponent {
   /*@ngInject*/
-  constructor($scope, $state) {
-    var database = firebase.database();
-    var history = ['Pas au cours du dernier mois', 'Moins d\'1 fois par semaine', '1 ou 2 fois par semaine', '3 ou 4 fois par semaine'];
+  constructor($scope, $state, Auth) {
+    
     $scope.loading = true;
 
     if($state.params.id) {
@@ -19,32 +18,34 @@ export class PsqiComponent {
         .then(function(datas) {
           $scope.writeRecord = function() {
             firebase.database().ref('records/psqi/' + $state.params.id).set({
-                patientId: $scope.datas.patientId,
-                birthdate: $scope.datas.birthdate,
-                date: $scope.datas.date,
-                bedtime: $scope.datas.bedtime || null,
-                fallAsleepTime: $scope.datas.fallAsleepTime || null,
-                waketime: $scope.datas.waketime || null,
-                sleepHours: $scope.datas.sleepHours || null,
-                halfHour: $scope.datas.halfHour || null,
-                earlyWake: $scope.datas.earlyWake || null,
-                toilets: $scope.datas.toilets || null,
-                breath: $scope.datas.breath || null,
-                cough: $scope.datas.cough || null,
-                cold: $scope.datas.cold || null,
-                hot: $scope.datas.hot || null,
-                nightmare: $scope.datas.nightmare || null,
-                pain: $scope.datas.pain || null,
-                quality: $scope.datas.quality || null,
-                drugs: $scope.datas.drugs || null,
-                stayAwake: $scope.datas.stayAwake || null,
-                depressed: $scope.datas.depressed || null,
-                maritalStatus: $scope.datas.maritalStatus || null,
-                snoring: $scope.datas.snoring || null,
-                apnea: $scope.datas.apnea || null,
-                spasm: $scope.datas.spasm || null,
-                confusion: $scope.datas.confusion || null,
-                otherAgitation: $scope.datas.otherAgitation || null
+              userId: datas.val().userId,
+              patientId: $scope.datas.patientId,
+              birthdate: $scope.datas.birthdate,
+              date: $scope.datas.date,
+              bedtime: $scope.datas.bedtime || null,
+              fallAsleepTime: $scope.datas.fallAsleepTime || null,
+              waketime: $scope.datas.waketime || null,
+              sleepHours: $scope.datas.sleepHours || null,
+              halfHour: $scope.datas.halfHour || null,
+              earlyWake: $scope.datas.earlyWake || null,
+              toilets: $scope.datas.toilets || null,
+              breath: $scope.datas.breath || null,
+              cough: $scope.datas.cough || null,
+              cold: $scope.datas.cold || null,
+              hot: $scope.datas.hot || null,
+              nightmare: $scope.datas.nightmare || null,
+              pain: $scope.datas.pain || null,
+              frequency: $scope.datas.frequency || null,
+              quality: $scope.datas.quality || null,
+              drugs: $scope.datas.drugs || null,
+              stayAwake: $scope.datas.stayAwake || null,
+              depressed: $scope.datas.depressed || null,
+              maritalStatus: $scope.datas.maritalStatus || null,
+              snoring: $scope.datas.snoring || null,
+              apnea: $scope.datas.apnea || null,
+              spasm: $scope.datas.spasm || null,
+              confusion: $scope.datas.confusion || null,
+              otherAgitation: $scope.datas.otherAgitation || null
             });
           }
           $scope.$apply(function(){
@@ -53,39 +54,46 @@ export class PsqiComponent {
           });
         });
     } else {
-      $scope.datas = {}
-      $scope.writeRecord = function() {
-        firebase.database().ref('records/psqi').push({
-          patientId: $scope.datas.patientId,
-          birthdate: $scope.datas.birthdate,
-          date: $scope.datas.date,
-          bedtime: $scope.datas.bedtime || null,
-          fallAsleepTime: $scope.datas.fallAsleepTime || null,
-          waketime: $scope.datas.waketime || null,
-          sleepHours: $scope.datas.sleepHours || null,
-          halfHour: $scope.datas.halfHour || null,
-          earlyWake: $scope.datas.earlyWake || null,
-          toilets: $scope.datas.toilets || null,
-          breath: $scope.datas.breath || null,
-          cough: $scope.datas.cough || null,
-          cold: $scope.datas.cold || null,
-          hot: $scope.datas.hot || null,
-          nightmare: $scope.datas.nightmare || null,
-          pain: $scope.datas.pain || null,
-          quality: $scope.datas.quality || null,
-          drugs: $scope.datas.drugs || null,
-          stayAwake: $scope.datas.stayAwake || null,
-          depressed: $scope.datas.depressed || null,
-          maritalStatus: $scope.datas.maritalStatus || null,
-          snoring: $scope.datas.snoring || null,
-          apnea: $scope.datas.apnea || null,
-          spasm: $scope.datas.spasm || null,
-          confusion: $scope.datas.confusion || null,
-          otherAgitation: $scope.datas.otherAgitation || null
-        });
-      }
-      $scope.loading = false;
+      Auth.getCurrentUser().then(function(result) {
+        var userId = result._id;
+        $scope.datas = {}
+        $scope.writeRecord = function() {
+          firebase.database().ref('records/psqi').push({
+            userId: userId,
+            patientId: $scope.datas.patientId,
+            birthdate: $scope.datas.birthdate,
+            date: $scope.datas.date,
+            bedtime: $scope.datas.bedtime || null,
+            fallAsleepTime: $scope.datas.fallAsleepTime || null,
+            waketime: $scope.datas.waketime || null,
+            sleepHours: $scope.datas.sleepHours || null,
+            halfHour: $scope.datas.halfHour || null,
+            earlyWake: $scope.datas.earlyWake || null,
+            toilets: $scope.datas.toilets || null,
+            breath: $scope.datas.breath || null,
+            cough: $scope.datas.cough || null,
+            cold: $scope.datas.cold || null,
+            hot: $scope.datas.hot || null,
+            nightmare: $scope.datas.nightmare || null,
+            pain: $scope.datas.pain || null,
+            frequency: $scope.datas.frequency || null,
+            quality: $scope.datas.quality || null,
+            drugs: $scope.datas.drugs || null,
+            stayAwake: $scope.datas.stayAwake || null,
+            depressed: $scope.datas.depressed || null,
+            maritalStatus: $scope.datas.maritalStatus || null,
+            snoring: $scope.datas.snoring || null,
+            apnea: $scope.datas.apnea || null,
+            spasm: $scope.datas.spasm || null,
+            confusion: $scope.datas.confusion || null,
+            otherAgitation: $scope.datas.otherAgitation || null
+          });
+        }
+        $scope.loading = false;
+      });
     }
+
+    $scope.history = ['Pas au cours du dernier mois', 'Moins d\'1 fois par semaine', '1 ou 2 fois par semaine', '3 ou 4 fois par semaine'];
 
     $scope.headers = [
       {
@@ -140,12 +148,12 @@ export class PsqiComponent {
       },
       {
         label: '7. Au cours du mois dernier, combien de fois avez-vous pris des médicaments (prescrits par votre médecin ou achetés sans ordonnance) pour faciliter votre sommeil ?',
-        scale: history,
+        scale: $scope.history,
         key: 'drugs'
       },
       {
         label: '8. Au cours du mois dernier, combien de fois avez-vous eu des difficultés à demeurer éveillé(e) pendant que vous conduisiez, preniez vos repas, étiez occupé(e) dans une activité sociale ?',
-        scale: history,
+        scale: $scope.history,
         key: 'stayAwake'
       },
       {

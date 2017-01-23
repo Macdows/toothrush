@@ -7,8 +7,8 @@ import routes from './edas.routes';
 
 export class EdasComponent {
   /*@ngInject*/
-  constructor($scope, $state) {
-    var database = firebase.database();
+  constructor($scope, $state, Auth) {
+    
 
     $scope.loading = true;
 
@@ -19,6 +19,7 @@ export class EdasComponent {
         .then(function(datas) {
           $scope.writeRecord = function() {
             firebase.database().ref('records/edas/' + $state.params.id).set({
+              userId: datas.val().userId,
               patientId: $scope.datas.patientId,
               birthdate: $scope.datas.birthdate,
               date: $scope.datas.date,
@@ -51,36 +52,40 @@ export class EdasComponent {
           });
         });
     } else {
-      $scope.datas = {}
-      $scope.writeRecord = function() {
-        firebase.database().ref('records/edas').push({
-          patientId: $scope.datas.patientId,
-          birthdate: $scope.datas.birthdate,
-          date: $scope.datas.date,
-          decompress: $scope.datas.decompress || null,
-          dryMouth: $scope.datas.dryMouth || null,
-          noPositiveEmotion: $scope.datas.noPositiveEmotion || null,
-          breathing: $scope.datas.breathing || null,
-          activities: $scope.datas.activities || null,
-          overreact: $scope.datas.overreact || null,
-          shaking: $scope.datas.shaking || null,
-          nervous: $scope.datas.nervous || null,
-          worried: $scope.datas.worried || null,
-          noPleasure: $scope.datas.noPleasure || null,
-          agitated: $scope.datas.agitated || null,
-          troubleRelaxing: $scope.datas.troubleRelaxing || null,
-          depressed: $scope.datas.depressed || null,
-          delayed: $scope.datas.delayed || null,
-          panic: $scope.datas.panic || null,
-          enthusiastic: $scope.datas.enthusiastic || null,
-          worthless: $scope.datas.worthless || null,
-          irritable: $scope.datas.irritable || null,
-          cardio: $scope.datas.cardio || null,
-          scared: $scope.datas.scared || null,
-          meaningless: $scope.datas.meaningless || null
-        });
-      }
-      $scope.loading = false;
+      Auth.getCurrentUser().then(function(result) {
+        var userId = result._id;
+        $scope.datas = {}
+        $scope.writeRecord = function() {
+          firebase.database().ref('records/edas').push({
+            userId: userId,
+            patientId: $scope.datas.patientId,
+            birthdate: $scope.datas.birthdate,
+            date: $scope.datas.date,
+            decompress: $scope.datas.decompress || null,
+            dryMouth: $scope.datas.dryMouth || null,
+            noPositiveEmotion: $scope.datas.noPositiveEmotion || null,
+            breathing: $scope.datas.breathing || null,
+            activities: $scope.datas.activities || null,
+            overreact: $scope.datas.overreact || null,
+            shaking: $scope.datas.shaking || null,
+            nervous: $scope.datas.nervous || null,
+            worried: $scope.datas.worried || null,
+            noPleasure: $scope.datas.noPleasure || null,
+            agitated: $scope.datas.agitated || null,
+            troubleRelaxing: $scope.datas.troubleRelaxing || null,
+            depressed: $scope.datas.depressed || null,
+            delayed: $scope.datas.delayed || null,
+            panic: $scope.datas.panic || null,
+            enthusiastic: $scope.datas.enthusiastic || null,
+            worthless: $scope.datas.worthless || null,
+            irritable: $scope.datas.irritable || null,
+            cardio: $scope.datas.cardio || null,
+            scared: $scope.datas.scared || null,
+            meaningless: $scope.datas.meaningless || null
+          });
+        }
+        $scope.loading = false;
+      });
     }
 
     $scope.headers = [

@@ -25,7 +25,6 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import contact from './contact/contact.component';
-import dentalSheet from './dental-sheet/dental-sheet.component';
 import records from './records/records.component'
 
 
@@ -50,7 +49,6 @@ angular.module('toothrushApp', [
   socket,
   util,
   contact,
-  dentalSheet,
   records
 ])
   .config(routeConfig)
