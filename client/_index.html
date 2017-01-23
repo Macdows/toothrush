@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
-    <title>Angular Full-Stack Generator</title>
+    <title>Toothrush</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -23,6 +23,19 @@
 
       ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAbsXdWriNDCgDkJroeX0Ia-WTZ-B090hg",
+        authDomain: "toothrush-5453a.firebaseapp.com",
+        databaseURL: "https://toothrush-5453a.firebaseio.com",
+        storageBucket: "toothrush-5453a.appspot.com",
+        messagingSenderId: "143005766787"
+      };
+      firebase.initializeApp(config);
     </script>
 
     <navbar></navbar>

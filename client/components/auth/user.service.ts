@@ -5,10 +5,10 @@ export function UserResource($resource) {
   return $resource('/api/users/:id/:controller', {
     id: '@_id'
   }, {
-    changePassword: {
+    updateUser: {
       method: 'PUT',
       params: {
-        controller: 'password'
+        controller: 'update'
       }
     },
     get: {
@@ -16,6 +16,12 @@ export function UserResource($resource) {
       params: {
         id: 'me'
       }
-    }
+    }//,
+    // getByID: {
+    //   method: 'GET',
+    //   params: {
+    //     id: givenId
+    //   }
+    // }
   });
 }

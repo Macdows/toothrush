@@ -1,0 +1,357 @@
+html{
+    background-color: #f3f3f3;
+}
+
+.form-labels-on-top{
+    box-sizing: border-box;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 55px;
+
+    background-color:  #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+
+    font: bold 14px sans-serif;
+    text-align: center;
+}
+
+.form-labels-on-top .form-row{
+    text-align: left;
+    max-width: 542px;
+    margin: 25px auto 0;
+}
+
+.form-labels-on-top .form-title-row{
+    margin: 40px auto 40px;
+}
+
+.form-labels-on-top h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color: #4C565E;
+    font-size: 24px;
+    padding: 0 0 12px 0;
+    margin: 0;
+    border-bottom: 2px solid #6CAEE0;
+}
+
+.form-labels-on-top .form-row > label span{
+    display: block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    padding: 0 0 12px;
+}
+
+.form-labels-on-top input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    // width: 300px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+}
+
+.form-labels-on-top input[type=radio],
+.form-labels-on-top input[type=checkbox]{
+    box-shadow: none;
+    width: auto;
+}
+
+.form-labels-on-top select{
+    background-color: #ffffff;
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 300px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+}
+
+.form-labels-on-top .form-radio-buttons > div{
+    margin-bottom: 10px;
+}
+
+.form-labels-on-top .form-radio-buttons label span{
+    margin-left: 8px;
+    margin-right: 10px;
+    color:  #5f5f5f;
+    font-weight: normal;
+}
+
+.form-labels-on-top .form-radio-buttons input{
+    width: auto;
+}
+
+.form-labels-on-top button{
+    border-radius: 2px;
+    background-color:  #6caee0;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 22px;
+    border: 0;
+    margin-top: 15px;
+}
+
+.form-labels-on-top{
+  .square{
+    width: 50%;
+    float: left;
+    margin-bottom: 22px;
+
+    label {
+      input, select {
+        margin-top: 12px;
+        width: 240px;
+      }
+
+      textarea {
+        margin-top: 12px;
+        width: 240px;
+        min-height: 45px
+      }
+    }
+  }
+
+  .col3 {
+    width: 25%;
+    // float: left;
+    display: inline-block;
+    margin-bottom: 22px;
+
+    label {
+      input {
+        width: 120px;
+      }
+    }
+  }
+
+  .middle{
+    margin-bottom: 22px;
+
+    label {
+      & {
+        width: 100%;
+      }
+
+      select {
+        margin-top: 12px;
+        width: 240px;
+      }
+      textarea {
+        margin-top: 12px;
+        width: 100%;
+        height: 100px;
+      }
+      input[type='checkbox']{
+        margin-left: 5px;
+        padding-top: 1px;
+      }
+      input{
+        margin-top: 12px;
+      }
+    }
+  }
+
+  .centered-options {
+    text-align: center !important;
+  }
+}
+
+
+.form-labels-on-top p.description {
+  font-weight: normal;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.left {
+  text-align: left;
+}
+
+.input-small {
+  width: 80px !important;
+}
+
+.inline {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+img.loading {
+  margin-left: 50%;
+  width: 35px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.trash-btn {
+  color: #d9534f;
+}
+
+.trash-btn:hover,.trash-btn:active {
+  color: #c9302c;
+}
+
+.record-links {
+  text-align: center;
+}
+
+.abal {
+  margin-left: -40px !important;
+}
+
+.kek {
+
+  margin-left: -154px;
+
+  input[type='text'] {
+      width: 150px;
+      margin: 3px;
+    }
+  select {
+      width: 150px !important;
+      margin: 3px;
+  }
+
+  div.item_title
+  {
+    text-align: center;
+  }
+
+
+  td.cell_center
+  {
+    text-align: center;
+  }
+
+  table
+  {
+    width: 100%;
+  }
+
+  .smallkek
+  {
+    width: 30px !important;
+    padding: 0;
+  }
+}
+
+.btn-disabled {
+  background-color: #e7e7e7 !important;
+}
+
+/* Making the form responsive. Remove this media query
+    if you don't need the form to work on mobile devices. */
+
+@media (max-width: 600px) {
+
+    .form-labels-on-top{
+        padding: 30px;
+    }
+
+    .form-labels-on-top input{
+        width: 240px;
+    }
+
+}
+
+table a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+table a:visited {
+  color: #999999;
+  font-weight:bold;
+  text-decoration:none;
+}
+table a:active,
+table a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+table {
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  background:#eaebec;
+  margin:20px;
+  border:#ccc 1px solid;
+  width: 90%;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+table th {
+  padding:21px 25px 22px 25px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child {
+  text-align: left;
+  padding-left:20px;
+}
+table tr:first-child th:first-child {
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+table tr:first-child th:last-child {
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:3px;
+}
+table tr {
+  text-align: center;
+  padding-left:20px;
+}
+table td:first-child {
+  text-align: left;
+  padding-left:20px;
+  border-left: 0;
+}
+table td {
+  padding:18px;
+  border-top: 1px solid #ffffff;
+  border-bottom:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+  border-bottom:0;
+}
+table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft:3px;
+  -webkit-border-bottom-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child {
+  -moz-border-radius-bottomright:3px;
+  -webkit-border-bottom-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+table tr:hover td {
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+}

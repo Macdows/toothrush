@@ -1,0 +1,37 @@
+img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
+
+.form-labels-on-top(ng-show="!loading")
+  .form-title-row
+    h1 Index de Sévérité de l'Insomnie (ISI)
+  div(ng-repeat='item in headers' ng-class='item.class')
+    label
+      span {{item.label}}
+      br
+      input(type='{{item.type}}', ng-model='datas[item.key]')
+  .clearfix
+    p.description
+      | Pour chacune des questions, veuillez cocher celle qui correspond le plus fidèlement à votre sommeil au cours du dernier mois.
+      br
+      br
+      | Pour les trois premières questions, veuillez estimer la SÉVÉRITÉ de vos difficultés de sommeil.
+
+  .form-row(ng-repeat='question in formContent')
+    label
+      span {{question.label}}
+    .form-radio-buttons
+      div
+        label(ng-repeat='option in question.scale')
+          input(type='radio', ng-model='datas[question.key]', name='{{$parent.$index}}', value='{{$index}}')
+          span {{option}}
+
+  .form-row
+    label
+      span 16. Combien de nuits par semaine (moyenne du dernier mois) avez-vous eu des difficultés de sommeil ?
+    .form-radio-buttons
+      div
+        label
+          input(type='number', ng-model='datas.occurences')
+          span nuits par semaine
+
+  .form-row
+    button(ng-click='writeRecord()' ng-disabled='!datas.patientId || !datas.birthdate || !datas.date' ng-class="!datas.patientId || !datas.birthdate || !datas.date ? 'btn-disabled' : ''") Calculer le score

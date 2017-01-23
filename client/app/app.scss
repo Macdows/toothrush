@@ -2,6 +2,7 @@ $icon-font-path: '/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 $fa-font-path: '/assets/fonts/font-awesome/';
 @import '~font-awesome/scss/font-awesome';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700);
 
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
 
@@ -19,7 +20,27 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
+@import 'contact/contact';
 @import 'main/main';
+@import 'records/dn4/dn4';
+@import 'records/edas/edas';
+@import 'records/general/general';
+@import 'records/isi/isi';
+@import 'records/psqi/psqi';
+@import 'records/records';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
 /* endinject */
+
+// .navbar {
+//   background: #1abc9c;
+// }
+
+html, body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // font-family: "Open Sans", Georgia, "Times New Roman", Times, serif;
+}
+
+.navbar-brand {
+  color: #1abc9c !important;
+}

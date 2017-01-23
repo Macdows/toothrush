@@ -1,0 +1,42 @@
+img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
+
+.form-labels-on-top(ng-show="!loading")
+  .form-title-row
+    h1 Créer une fiche clinique
+  .form-row
+    .middle.record-links
+      .btn.btn-default.btn-lg(ui-sref='general')
+        | Fiche générale
+    .square.record-links
+      .btn.btn-default.btn-lg(ui-sref='dn4')
+        | Questionnaire DN4
+    .square.record-links
+      .btn.btn-default.btn-lg(ui-sref='edas')
+        | Questionnaire EDAS21
+    .square.record-links
+      .btn.btn-default.btn-lg(ui-sref='isi')
+        | Questionnaire ISI
+    .square.record-links
+      .btn.btn-default.btn-lg(ui-sref='psqi')
+        | Questionnaire PSQI
+  .clearfix
+  .list(ng-if='!visitor')
+    .form-title-row
+      h1 Liste des fiches cliniques
+    table(cellspacing='0')
+      thead
+        tr
+          th Numéro de dossier
+          th Type
+          th Date
+          th Actions
+      tbody
+        tr(ng-repeat='item in records' ng-class="{even : $index%2==0}")
+          td {{item.patientId}}
+          td {{item.type | uppercase}}
+          td {{item.date}}
+          td
+            .btn.btn-sm(ui-sref="{{item.parentKey}}({id: item.id})" uib-tooltip='Voir/Éditer')
+              span.glyphicon.glyphicon-eye-open
+            .btn.btn-sm.trash-btn(ng-click='remove(item)' uib-tooltip='Supprimer')
+              span.glyphicon.glyphicon-trash
