@@ -14,15 +14,14 @@ export class RecordsComponent {
   /*@ngInject*/
   constructor($scope, Auth) {
     $scope.loading = true;
-    console.log(Auth);
-
 
     Auth.getCurrentUser().then(function(result) {
       var userId = result._id;
       var ref = firebase.database().ref('records');
 
-      if (Auth.hasRole('admin')) {
+      if (result.role === 'admin') {
         ref.once('value').then(function(datas) {
+          console.log(datas.val());
           var list = [];
           angular.forEach(datas.val(), function(category, key) {
             angular.forEach(category, function(record, k) {
@@ -38,7 +37,7 @@ export class RecordsComponent {
             $scope.loading = false;
           });
         })
-      } else if (Auth.hasRole('user')) {
+      } else if (result.role === 'user') {
         ref.child('general').orderByChild('userId').equalTo(userId)
           .on("value", function(general) {
             ref.child('edas').orderByChild('userId').equalTo(userId)
@@ -49,8 +48,13 @@ export class RecordsComponent {
                       .on("value", function(psqi) {
                         ref.child('dn4').orderByChild('userId').equalTo(userId)
                           .on("value", function(dn4) {
-                            var categories = [];
-                            categories.push(general.val(), edas.val(), isi.val(), psqi.val(), dn4.val());
+                            var categories = {};
+                            categories['general'] = general.val();
+                            categories['edas'] = edas.val();
+                            categories['isi'] = isi.val();
+                            categories['psqi'] = psqi.val();
+                            categories['dn4'] = dn4.val();
+                            console.log(categories);
                             var list = [];
                             angular.forEach(categories, function(category, key) {
                               angular.forEach(category, function(record, k) {
@@ -70,12 +74,13 @@ export class RecordsComponent {
                 });
             });
         });
+      } else {
+        $scope.$evalAsync(function(){
+          $scope.visitor = true;
+          $scope.loading = false;
+        });
       }
     });
-
-    $scope.exportPdf = function(item) {
-      console.log('export', item);
-    }
 
     $scope.remove = function(item) {
       firebase.database().ref('records/' + item.type + '/' + item.id).remove()

@@ -34,4 +34,4 @@ img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
 
 
   .form-row
-    button(ng-click='writeRecord()') Submit Form
+    button(ng-click='writeRecord()' ng-disabled='!datas.patientId || !datas.birthdate || !datas.date' ng-class="!datas.patientId || !datas.birthdate || !datas.date ? 'btn-disabled' : ''") Submit Form

@@ -34,4 +34,4 @@ img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
           span nuits par semaine
 
   .form-row
-    button(ng-click='writeRecord()') Calculer le score
+    button(ng-click='writeRecord()' ng-disabled='!datas.patientId || !datas.birthdate || !datas.date' ng-class="!datas.patientId || !datas.birthdate || !datas.date ? 'btn-disabled' : ''") Calculer le score

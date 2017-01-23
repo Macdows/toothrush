@@ -1,1 +1,27 @@
-div This is the contact view.
+.form-labels-on-top
+  p Veuillez nous laisser vos coordonnées et la raison de votre prise de contact.
+  p Nous pourrons ainsi mieux répondre à vos questions dans de bref délai
+  br
+  .square
+    span Nom :
+    br
+    input(type='text', ng-model='contact_nom')
+  .square
+    span Prénom :
+    br
+    input(type='text', ng-model='contact_prenom')
+  .square
+    span Téléphone :
+    br
+    input(type='text', ng-model='contact_telephone')
+  .square
+    span e-mail :
+    br
+    input(type='text', ng-model='contact_email')
+  .middle
+    label
+      span Votre message :
+      br
+      textarea
+  .middle
+    button Envoyer

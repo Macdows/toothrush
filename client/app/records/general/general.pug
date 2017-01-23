@@ -22,214 +22,233 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
       textarea(ng-model='datas.checkup')
 
   // //1 motif de la consultation
-  .form-title-row
-    h1 1 Motif de la consultation :
-  .middle
-    label
-      textarea(ng-model='datas.reasons')
-  .middle
-    label
-      | Douleur :
-      input(type='checkbox', value='douleur', ng-model='datas.pain')
+  div(ng-click="toggleDiv('show1')")
+    .form-title-row
+      h1 1 Motif de la consultation :
+  div(ng-hide="show1")
+    .middle
+      label
+        textarea(ng-model='datas.reasons')
+    .middle
+      label
+        | Douleur :
+        input(type='checkbox', value='douleur', ng-model='datas.pain')
 
 
   // //2 evaluation de la douleur
-  .form-title-row
-    h1 2 Evaluation de la douleur
-  .square
-    label
-      span Douleur 1 :
-      br
-      input(type='text', ng-model='datas.firstpain')
-  .square(ng-repeat='item in pain1')
-    label
-      span {{item.label}}
-      br
-      select(ng-options='numbers for numbers in item.scale', ng-model='datas[item.key]')
-  .square
-    label
-      span Date de début
-      input(type='text', ng-model='datas.startdate')
+  div(ng-click="toggleDiv('show2')")
+    .form-title-row
+      h1 2 Evaluation de la douleur
+  div(ng-hide='show2')
+    .square
+      label
+        span Douleur 1 :
+        br
+        input(type='text', ng-model='datas.firstpain')
+    .square(ng-repeat='item in pain1')
+      label
+        span {{item.label}}
+        br
+        select(ng-options='numbers for numbers in item.scale', ng-model='datas[item.key]')
+    .square
+      label
+        span Date de début
+        input(type='text', ng-model='datas.startdate')
 
-  .square(ng-repeat='item in pain2')
-    label
-      span  {{item.label}}
-      br
-      input(type='text', ng-model='datas[item.key]')
+    .square(ng-repeat='item in pain2')
+      label
+        span  {{item.label}}
+        br
+        input(type='text', ng-model='datas[item.key]')
 
-  .form-row
-    a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='dn4')
-      | Questionnaire DN4
-    label
-      span Score DN4
-      br
-      input(type='text', ng-model='datas.dn4')
+    .clearfix
+
+    .middle
+      a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='dn4')
+        | Questionnaire DN4
+      label
+        span Score DN4
+        br
+        input(type='text', ng-model='datas.dn4')
 
   // //3 Environnement
-  .form-title-row
-    h1 3 Environnement :
-
-  .middle(ng-repeat='item in environment')
-    label.left
-      span {{item.label}}
-      br
-      textarea(ng-model='datas[item.key]')
-
-  .middle
-    label
-      span Score EDAS21
-  .middle
-    a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='edas')
-      | Questionnaire EDAS21
-  .col3
-    label
-      span Anxiété :
-      br
-      input(type='number', ng-model='datas.anxiety')
-  .col3
-    label
-      span Dépression :
-      br
-      input(type='number', ng-model='datas.depression')
-  .col3
-    label
-      span Stress :
-      br
-      input(type='number', ng-model='datas.stress')
+  div(ng-click="toggleDiv('show3')")
+    .form-title-row
+      h1 3 Environnement :
+  div(ng-hide='show3')
+    .middle(ng-repeat='item in environment')
+      label.left
+        span {{item.label}}
+        br
+        textarea(ng-model='datas[item.key]')
+    .middle
+      label
+        span Score EDAS21
+    .middle
+      a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='edas')
+        | Questionnaire EDAS21
+    .col3
+      label
+        span Anxiété :
+        br
+        input(type='number', ng-model='datas.anxiety')
+    .col3
+      label
+        span Dépression :
+        br
+        input(type='number', ng-model='datas.depression')
+    .col3
+      label
+        span Stress :
+        br
+        input(type='number', ng-model='datas.stress')
 
   // //4 Trouble de la posture
-  .form-title-row
-    h1 4 Trouble de la posture :
-  .middle
-    label.left
-      span Rachidienne :
-      textarea(ng-model='datas.rachid')
-  .middle
-    label.left
-      span Céphalique :
-      textarea(ng-model='datas.cephal')
+  div(ng-click="toggleDiv('show4')")
+    .form-title-row
+      h1 4 Trouble de la posture :
+  div(ng-hide='show4')
+    .middle
+      label.left
+        span Rachidienne :
+        textarea(ng-model='datas.rachid')
+    .middle
+      label.left
+        span Céphalique :
+        textarea(ng-model='datas.cephal')
 
   // //5 Trouble du sommeil
-  .form-title-row
-    h1 5 Trouble du sommeil :
-
-  .form-row
-    label
-      span Souffrez vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
-    .form-radio-buttons.centered-options
+  div(ng-click="toggleDiv('show5')")
+    .form-title-row
+      h1 5 Trouble du sommeil :
+  div(ng-hide='show5')
+    .form-row
       label
-        input(type='radio', ng-model='datas.apnea', value='true')
-        span Oui
+        span Souffrez vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
+      .form-radio-buttons.centered-options
+        label
+          input(type='radio', ng-model='datas.apnea', value='true')
+          span Oui
+        label
+          input(type='radio', ng-model='datas.apnea', value='false')
+          span Non
+    br
+    .square
       label
-        input(type='radio', ng-model='datas.apnea', value='false')
-        span Non
-  br
-  .square
-    label
-      span Autres symptômes:
-      br
-      textarea(ng-model='datas.othersymptoms')
-  .square
-    label
-      span Traitement:
-      br
-      textarea(ng-model='datas.treatment2')
-  .square
-    label
-      a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='psqi')
-        | Questionnaire PSQI
-    label
-      span Score PSQI :
-      input(type='number', ng-model='datas.psqi')
-  .square
-    label
-      a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='isi')
-        | Questionnaire ISI
-    label
-      span Score ISI :
-      br
-      input(type='number', ng-model='datas.isi')
+        span Autres symptômes:
+        br
+        textarea(ng-model='datas.othersymptoms')
+    .square
+      label
+        span Traitement:
+        br
+        textarea(ng-model='datas.treatment2')
+    .square
+      label
+        a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='psqi')
+          | Questionnaire PSQI
+      label
+        span Score PSQI :
+        input(type='number', ng-model='datas.psqi')
+    .square
+      label
+        a.btn.btn-default.btn-lg.btn-register(target="_blank" ui-sref='isi')
+          | Questionnaire ISI
+      label
+        span Score ISI :
+        br
+        input(type='number', ng-model='datas.isi')
 
   // //6 Trouble oculaire
-  .form-title-row
-    h1 6 Trouble oculaire :
-  .middle
-    label
-      textarea(ng-model='datas.eyedisorder')
+  div(ng-click="toggleDiv('show6')")
+    .form-title-row
+      h1 6 Trouble oculaire :
+  div(ng-hide='show6')
+    .middle
+      label
+        textarea(ng-model='datas.eyedisorder')
 
   // //7  Habitude novices
-  .form-title-row
-    h1 7 Habitude novices :
-  .form-row
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.onycophagy')
-        span Onycophagie
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.nibbling')
-        span Mordillement des lèvres/stylo/objets
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.bruxism')
-        span Bruxisme d'éveil
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.chewinggum')
-        span Chewing-gum
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.tobacco')
-        span Tabac
-    .form-radio-buttons
-      label
-        input(type='checkbox', ng-model='datas.others')
-        span Autres :
-    .middle.form-radio-buttons
-      label
-        br
-        textarea(ng-model='data.othersText')
+  div(ng-click="toggleDiv('show7')")
+    .form-title-row
+      h1 7 Habitude novices :
+  div(ng-hide='show7')
+    .form-row
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.onycophagy')
+          span Onycophagie
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.nibbling')
+          span Mordillement des lèvres/stylo/objets
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.bruxism')
+          span Bruxisme d'éveil
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.chewinggum')
+          span Chewing-gum
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.tobacco')
+          span Tabac
+      .form-radio-buttons
+        label
+          input(type='checkbox', ng-model='datas.others')
+          span Autres :
+      .middle.form-radio-buttons
+        label
+          br
+          textarea(ng-model='data.othersText')
 
-  // //8  DYSFONCTIONNEMENTS ORO-LINGAUX :
-  .form-title-row
-    h1 8 Dysfonctionnements oro-lingaux :
-  .form-radio-buttons
-    label
-      input(type='checkbox', ng-model='datas.orolingual')
-      span Dysfonctionnements orolinguaux
-    label
-      input(type='checkbox', ng-model='datas.halloween')
-      span Déglutition atypique
-  .square
-    label
-      span Score de Friedman :
-      br
-      input(type='text', ng-model='datas.friedman')
-  .square
-    label
-      span Score de Mallampati :
-      br
-      input(type='text', ng-model='datas.mallampati')
+  // 8  DYSFONCTIONNEMENTS ORO-LINGAUX :
+  div(ng-click="toggleDiv('show8')")
+    .form-title-row
+      h1 8 Dysfonctionnements oro-lingaux :
+  div(ng-hide='show8')
+    .form-radio-buttons
+      label
+        input(type='checkbox', ng-model='datas.orolingual')
+        span Dysfonctionnements orolinguaux
+      label
+        input(type='checkbox', ng-model='datas.halloween')
+        span Déglutition atypique
+    .square
+      label
+        span Score de Friedman :
+        br
+        input(type='text', ng-model='datas.friedman')
+    .square
+      label
+        span Score de Mallampati :
+        br
+        input(type='text', ng-model='datas.mallampati')
 
   // 9 TRAUMATISME :
-  .form-title-row
-    h1 9 Traumatisme :
-  .middle
-    label
-      textarea(ng-model='datas.trauma')
+  div(ng-click="toggleDiv('show9')")
+    .form-title-row
+      h1 9 Traumatisme :
+  div(ng-hide='show9')
+    .middle
+      label
+        textarea(ng-model='datas.trauma')
 
   // 10 OBSERVATIONS COMPLÉMENTAIRES :
-  .form-title-row
-    h1 10 Observations complémentaires :
-  .middle
-    label
-      textarea(ng-model='datas.observations')
+  div(ng-click="toggleDiv('show10')")
+    .form-title-row
+      h1 10 Observations complémentaires :
+  div(ng-hide='show10')
+    .middle
+      label
+        textarea(ng-model='datas.observations')
 
   // 11
-  div(ng-click='toggleDiv()')
+  div(ng-click="toggleDiv('show11')")
     .form-title-row
       h1 11 Palpation(s) douloureuse(s) des muscles masticateurs, des ATM, et des muscles cervico-scapulaires :
-  div.kek(ng-show="isShown")
+  div.kek(ng-hide="show11")
     table.vtable
       thead
         tr
@@ -304,144 +323,151 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
             input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
 
   // //12 Rapport incisifs
-  .form-title-row
-    h1 12 Rapport incisifs :
-  .form-radio-buttons.left
-    span Dent de reference :
+  div(ng-click="toggleDiv('show12')")
+    .form-title-row
+      h1 12 Rapport incisifs :
+  div(ng-hide='show12')
+    .form-radio-buttons.left
+      span Dent de reference :
+      br
+      label
+        input(type='radio', ng-model='datas.toothref', value='11')
+        span 11
+      label
+        input(type='radio', ng-model='datas.toothref', value='21')
+        span 21
+      label
+        input(type='radio', ng-model='datas.toothref', value='other')
+        span Autre :
+      input(type='text', ng-model='datas.toothrefOther')
     br
-    label
-      input(type='radio', ng-model='datas.toothref', value='11')
-      span 11
-    label
-      input(type='radio', ng-model='datas.toothref', value='21')
-      span 21
-    label
-      input(type='radio', ng-model='datas.toothref', value='other')
-      span Autre :
-    input(type='text', ng-model='datas.toothrefOther')
-  br
-  .form-radio-buttons.left
-    label
-      input(type='radio', ng-model='datas.toothref2', value='31')
-      span 31
-    label
-      input(type='radio', ng-model='datas.toothref2', value='41')
-      span 41
-    label
-      input(type='radio', ng-model='datas.toothref2', value='other')
-      span Autre :
-    input(type='text', ng-model='datas.toothref2Other')
-  br
-  .form-radio-buttons.left
-    | Surplomb horizontal
-    input.inline.input-small(type='number', ng-model='datas.horizontaloverhang')
-    | mm
-    label.inline
-      input(type='checkbox', ng-model='datas.negative1')
-      span Si négatif
+    .form-radio-buttons.left
+      label
+        input(type='radio', ng-model='datas.toothref2', value='31')
+        span 31
+      label
+        input(type='radio', ng-model='datas.toothref2', value='41')
+        span 41
+      label
+        input(type='radio', ng-model='datas.toothref2', value='other')
+        span Autre :
+      input(type='text', ng-model='datas.toothref2Other')
     br
-    span Recouvrement vertical
-    input.inline.input-small(type='number', ng-model='datas.verticaloverlap')
-    span mm
-    label.inline
-      input(type='checkbox', ng-model='datas.negative2')
-      span Si négatif
-    br
-    span Existe-t-il un décalage des milieux inter-incisifs ?
-    label.inline
-      input(type='radio', ng-model='datas.offset', value='oui')
-      span Oui (
-      input.input-small(type='number', ng-model='datas.offsetDetail')
-      span mm)
-    label.inline
-      input(type='radio', ng-model='datas.offset', value='non')
-      span Non
+    .form-radio-buttons.left
+      | Surplomb horizontal
+      input.inline.input-small(type='number', ng-model='datas.horizontaloverhang')
+      | mm
+      label.inline
+        input(type='checkbox', ng-model='datas.negative1')
+        span Si négatif
+      br
+      span Recouvrement vertical
+      input.inline.input-small(type='number', ng-model='datas.verticaloverlap')
+      span mm
+      label.inline
+        input(type='checkbox', ng-model='datas.negative2')
+        span Si négatif
+      br
+      span Existe-t-il un décalage des milieux inter-incisifs ?
+      label.inline
+        input(type='radio', ng-model='datas.offset', value='oui')
+        span Oui (
+        input.input-small(type='number', ng-model='datas.offsetDetail')
+        span mm)
+      label.inline
+        input(type='radio', ng-model='datas.offset', value='non')
+        span Non
 
 
   // 13
-  .form-title-row
-    h1 13 Mouvements d'ouverture, latéralités et propulsion :
-  .kek
-    table.vtable
-      thead
-        tr
-          th
-          th(colspan='3') Côté droit
-          th(colspan='3') Côté gauche
-      tbody
-        tr
-          td
-            | Ouverture non douloureuse :
-            input.smallkek(type='text', value='0', ng-model='datas.noPainOpen')
-            | mm
-          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
-          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
-        tr(ng-repeat="key in label_partie_13")
-          td
-            |{{key.label}}
-            input.smallkek(ng-model= "datas[titre.key+'PainOpen']", type='text', value='0', ng-if='key.showInput')
-            span(ng-if='key.showInput') mm
-            td.cell_center
-              input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
-            td.cell_center
-              input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
-            td.cell_center
-              select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
-              input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
-            td.cell_center
-              input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
-            td.cell_center
-              input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
-            td.cell_center
-              select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
-              input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
-        tr
-          td(colspan='12')
-            .form-radio-buttons
-              span Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ?&nbsp;
-              label(ng-repeat="option in scale")
-                input(
-                  type='radio',
-                  name='13_radio_maux_tete',
-                  ng-model='datas.headache'
-                )
-                span {{option}}
+  div(ng-click="toggleDiv('show13')")
+    .form-title-row
+      h1 13 Mouvements d'ouverture, latéralités et propulsion :
+  div(ng-hide='show13')
+    .kek
+      table.vtable
+        thead
           tr
-            td.cell_center(colspan='1')
-              div Si oui lesquels ?
-            td.cell_center(colspan='11')
-              textarea.text_field_e(ng-model='datas.whichMotionHeadache', rows='2', style='width:100%')
+            th
+            th(colspan='3') Côté droit
+            th(colspan='3') Côté gauche
+        tbody
+          tr
+            td
+              | Ouverture non douloureuse :
+              input.smallkek(type='text', value='0', ng-model='datas.noPainOpen')
+              | mm
+            td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+            td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+          tr(ng-repeat="key in label_partie_13")
+            td
+              |{{key.label}}
+              input.smallkek(ng-model= "datas[titre.key+'PainOpen']", type='text', value='0', ng-if='key.showInput')
+              span(ng-if='key.showInput') mm
+              td.cell_center
+                input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
+              td.cell_center
+                input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
+              td.cell_center
+                select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
+                input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
+              td.cell_center
+                input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
+              td.cell_center
+                input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
+              td.cell_center
+                select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
+                input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
+          tr
+            td(colspan='12')
+              .form-radio-buttons
+                span Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ?&nbsp;
+                label(ng-repeat="option in scale")
+                  input(
+                    type='radio',
+                    name='13_radio_maux_tete',
+                    ng-model='datas.headache'
+                  )
+                  span {{option}}
+            tr
+              td.cell_center(colspan='1')
+                div Si oui lesquels ?
+              td.cell_center(colspan='11')
+                textarea.text_field_e(ng-model='datas.whichMotionHeadache', rows='2', style='width:100%')
 
   // 14 TRAJET D'OUVERTURE/FERMETURE :
-  .form-title-row
-    h1 14 Trajet d'ouverture/fermeture :
-  span Forme du trajet d'ouverture :
-  .form-row
-    .form-radio-buttons
-      label
-        input#trajetouverture0(type='checkbox', ng-model='datas.straight', onchange="if(document.getElementById('trajetouverture0').checked) for (var i = 1 ; i < 5 ; ++i) document.getElementById('trajetouverture' + i).checked = false;")
-        span rectiligne
-    .form-radio-buttons
-      label
-        input#trajetouverture1(type='checkbox', ng-model='datas.deflectRight', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
-        span déflexion corrigée à droite
-    .form-radio-buttons
-      label
-        input#trajetouverture2(type='checkbox', ng-model='datas.deflectLeft', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
-        span déflexion corrigée à gauche
-    .form-radio-buttons
-      label
-        input#trajetouverture3(type='checkbox', ng-model='datas.deviationRight', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
-        span déviation non corrigée à droite
-    .form-radio-buttons
-      label
-        input#trajetouverture4(type='checkbox', ng-model='datas.deviationLeft', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
-        span déviation non corrigée à gauche
+  div(ng-click="toggleDiv('show14')")
+    .form-title-row
+      h1 14 Trajet d'ouverture/fermeture :
+  div(ng-hide='show14')
+    span Forme du trajet d'ouverture :
+    .form-row
+      .form-radio-buttons
+        label
+          input#trajetouverture0(type='checkbox', ng-model='datas.straight', onchange="if(document.getElementById('trajetouverture0').checked) for (var i = 1 ; i < 5 ; ++i) document.getElementById('trajetouverture' + i).checked = false;")
+          span rectiligne
+      .form-radio-buttons
+        label
+          input#trajetouverture1(type='checkbox', ng-model='datas.deflectRight', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
+          span déflexion corrigée à droite
+      .form-radio-buttons
+        label
+          input#trajetouverture2(type='checkbox', ng-model='datas.deflectLeft', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
+          span déflexion corrigée à gauche
+      .form-radio-buttons
+        label
+          input#trajetouverture3(type='checkbox', ng-model='datas.deviationRight', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
+          span déviation non corrigée à droite
+      .form-radio-buttons
+        label
+          input#trajetouverture4(type='checkbox', ng-model='datas.deviationLeft', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
+          span déviation non corrigée à gauche
 
   // 15
-  .form-title-row
-    h1 15 Bruits articulaires lors des mouvements fonctionnels :
-  .kek
+  div(ng-click="toggleDiv('show15')")
+    .form-title-row
+      h1 15 Bruits articulaires lors des mouvements fonctionnels :
+  .kek(ng-hide='show15')
     table.vtable
       thead
         tr
@@ -478,40 +504,43 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
             input(type='text', ng-model="datas[titre.key+'OtherUsualPain']", ng-if=("datas[titre.key+'SelectUsualPain']=='Autres'"))
 
   // 16 BLOCAGE ARTICULAIRE :
-  .form-title-row
-    h1 16 Blocage articulaire :
-  .left
-    h4 Vous est-il arrivé d'être bloqué(e) ?
-    .form-row
-      .form-radio-buttons
-        label
-          input(type='checkbox', ng-model='openmouth')
-          span Bouche ouverte
-        label
-          input(type='checkbox', ng-model='closedmouth')
-          span Bouche ferme
-        label
-          input(type='checkbox', ng-model='blockAtmRight')
-          span ATM droit
-        label
-          input(type='checkbox', ng-model='blockAtmLeft')
-          span ATM gauche
-  br
-  .square
-    label
-      span Frequence :
-      br
-      input(type='text', ng-model='blockfrequency')
-  .square
-    label
-      span Dernier episode :
-      br
-      input(type='text', ng-model='lastoccurence')
+  div(ng-click="toggleDiv('show16')")
+    .form-title-row
+      h1 16 Blocage articulaire :
+  div(ng-hide='show16')
+    .left
+      h4 Vous est-il arrivé d'être bloqué(e) ?
+      .form-row
+        .form-radio-buttons
+          label
+            input(type='checkbox', ng-model='openmouth')
+            span Bouche ouverte
+          label
+            input(type='checkbox', ng-model='closedmouth')
+            span Bouche ferme
+          label
+            input(type='checkbox', ng-model='blockAtmRight')
+            span ATM droit
+          label
+            input(type='checkbox', ng-model='blockAtmLeft')
+            span ATM gauche
+    br
+    .square
+      label
+        span Frequence :
+        br
+        input(type='text', ng-model='blockfrequency')
+    .square
+      label
+        span Dernier episode :
+        br
+        input(type='text', ng-model='lastoccurence')
 
   // 17
-  .form-title-row
-    h1 17 Test du bâtonnet :
-  .kek.abal
+  div(ng-click="toggleDiv('show17')")
+    .form-title-row
+      h1 17 Test du bâtonnet :
+  .kek.abal(ng-hide='show17')
     table.vtable
       thead
         tr
@@ -541,9 +570,10 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
             )
 
   //18 Elasticité articulaire
-  .form-title-row
-    h1 18 Elasticité articulaire :
-  .left
+  div(ng-click="toggleDiv('show18')")
+    .form-title-row
+      h1 18 Elasticité articulaire :
+  .left(ng-hide='show18')
     .form-radio-buttons
       span ATM droite :&nbsp;
       label
@@ -562,98 +592,102 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
         span Raide
 
   //19. Examen endo-buccal
-  .form-title-row
-    h1 19. Examen endo-buccal :
-  .left
-    .form-radio-buttons
-      h4 Contacts en OIM :
-      label
-        input(type='radio', ng-model='datas.oimcontact', value='0')
-        span Répartis de manière équilibrée
-      br
-      label
-        input(type='radio', ng-model='datas.oimcontact', value='1')
-        span Autre
-      textarea(ng-model='datas.oimcontact')
+  div(ng-click="toggleDiv('show19')")
+    .form-title-row
+      h1 19. Examen endo-buccal :
+  div(ng-hide='show19')
+    .left
+      .form-radio-buttons
+        h4 Contacts en OIM :
+        label
+          input(type='radio', ng-model='datas.oimcontact', value='0')
+          span Répartis de manière équilibrée
+        br
+        label
+          input(type='radio', ng-model='datas.oimcontact', value='1')
+          span Autre
+        textarea(ng-model='datas.oimcontact')
 
-      h4 La position dans laquelle vous fermez vos dents vous paraît-elle confortable ?
-      label
-        input(type='radio', ng-model='datas.closeteeth', value='0')
-        span Oui
-      label
-        input(type='radio', ng-model='datas.closeteeth', value='1')
-        span Non
+        h4 La position dans laquelle vous fermez vos dents vous paraît-elle confortable ?
+        label
+          input(type='radio', ng-model='datas.closeteeth', value='0')
+          span Oui
+        label
+          input(type='radio', ng-model='datas.closeteeth', value='1')
+          span Non
 
-      h4 Mastication unilatérale ?
+        h4 Mastication unilatérale ?
+        label
+          input(type='radio', ng-model='datas.chewing', value='0')
+          span Oui
+        label
+          input(type='radio', ng-model='datas.chewing', value='1')
+          span Non
+        br
+        br
+    .square(ng-repeat='item in bucal')
       label
-        input(type='radio', ng-model='datas.chewing', value='0')
-        span Oui
-      label
-        input(type='radio', ng-model='datas.chewing', value='1')
-        span Non
-      br
-      br
-  .square(ng-repeat='item in bucal')
-    label
-      span {{item.label}}
-      input(type='text', ng-model='datas[item.key]')
+        span {{item.label}}
+        input(type='text', ng-model='datas[item.key]')
 
-  h4 Différentiel ORC-OIM :
-  .square
-    label
-      span Dans le sens vertical
-      input(type='text', ng-model='datas.vertical')
-  .square
-    label
-      span Dans le sens antéro-postérieur
-      input(type='text', ng-model='datas.anteroPosterieur')
-  .middle
-    label
-      span Dans le sens latéral
-      br
-      input(type='text', ng-model='datas.lateral')
+    h4 Différentiel ORC-OIM :
+    .square
+      label
+        span Dans le sens vertical
+        input(type='text', ng-model='datas.vertical')
+    .square
+      label
+        span Dans le sens antéro-postérieur
+        input(type='text', ng-model='datas.anteroPosterieur')
+    .middle
+      label
+        span Dans le sens latéral
+        br
+        input(type='text', ng-model='datas.lateral')
 
   // 20 Rapport incisifs
-  .form-title-row
-    h1 20. Usures Dentaire/bruxismes :
-  .square(ng-repeat='item in wear')
-    label
-      span {{item.label}}
-      input(type='text', ng-model='datas[item.key]')
-
-  .square
-    label
-      span Bruxisme d'éveil
-      br
-      select(ng-options='plause as plause for plause in plause', ng-model='datas.plause')
-  .middle
-    label
-      span Bruxisme de sommeil(Diagnostic )
-      br
-      select(ng-options='plause as plause for plause in plause', ng-model='datas.plause')
-
-    br
-
-  .middle
-    label
-      | Information complémentaire
-      br
-      textarea(ng-model='datas.incisifinfo')
+  div(ng-click="toggleDiv('show20')")
+    .form-title-row
+      h1 20. Usures Dentaire/bruxismes :
+  div(ng-hide='show20')
+    .square(ng-repeat='item in wear')
+      label
+        span {{item.label}}
+        input(type='text', ng-model='datas[item.key]')
+    .square
+      label
+        span Bruxisme d'éveil
+        br
+        select(ng-options='plause as plause for plause in plause', ng-model='datas.plause')
+    .middle
+      label
+        span Bruxisme de sommeil(Diagnostic )
+        br
+        select(ng-options='plause as plause for plause in plause', ng-model='datas.plause')
+    .middle
+      label
+        | Information complémentaire
+        br
+        textarea(ng-model='datas.incisifinfo')
 
   // Diagnostic :
-  .form-title-row
-    h1 Diagnostic :
-  .middle
-    label
-      textarea(ng-model='datas.diagnostic')
+  div(ng-click="toggleDiv('show21')")
+    .form-title-row
+      h1 Diagnostic :
+  div(ng-hide='show21')
+    .middle
+      label
+        textarea(ng-model='datas.diagnostic')
 
   // Diagnostic :
-  .form-title-row
-    h1 Plan de traitement :
-  .middle
-    label
-      textarea(ng-model='datas.treatmentplan')
+  div(ng-click="toggleDiv('show22')")
+    .form-title-row
+      h1 Plan de traitement :
+  div(ng-hide='show22')
+    .middle
+      label
+        textarea(ng-model='datas.treatmentplan')
 
 
   .form-row
-    button(ng-click='writeRecord()') Calculer le score
+    button(ng-click='writeRecord()' ng-disabled='!datas.patientId || !datas.birthdate || !datas.date' ng-class="!datas.patientId || !datas.birthdate || !datas.date ? 'btn-disabled' : ''") Calculer le score

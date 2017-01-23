@@ -24,10 +24,12 @@ export class GeneralComponent {
               patientId: $scope.datas.patientId,
               birthdate: $scope.datas.birthdate,
               date: $scope.datas.date,
-              profession: $scope.datas.profession,
-              checkup: $scope.datas.checkup || null || null,
-              checkup2: $scope.datas.checkup2 || null,
+              profession: $scope.datas.profession || null,
+              gender: $scope.datas.gender || null,
+              checkup: $scope.datas.checkup || null,
+              reasons: $scope.datas.reasons || null,
               pain: $scope.datas.pain || null,
+              firstpain: $scope.datas.firstpain || null,
               bottom: $scope.datas.bottom || null,
               peak: $scope.datas.peak || null,
               startdate: $scope.datas.startdate || null,
@@ -37,6 +39,7 @@ export class GeneralComponent {
               startingCycle: $scope.datas.startingCycle || null,
               modifiedBy: $scope.datas.modifiedBy || null,
               treatment: $scope.datas.treatment || null,
+              dn4: $scope.datas.dn4 || null,
               family: $scope.datas.family || null,
               social: $scope.datas.social || null,
               professional: $scope.datas.professional || null,
@@ -451,10 +454,12 @@ export class GeneralComponent {
             patientId: $scope.datas.patientId,
             birthdate: $scope.datas.birthdate,
             date: $scope.datas.date,
-            profession: $scope.datas.profession,
-            checkup: $scope.datas.checkup || null || null,
-            checkup2: $scope.datas.checkup2 || null,
+            profession: $scope.datas.profession || null,
+            gender: $scope.datas.gender || null,
+            checkup: $scope.datas.checkup || null,
+            reasons: $scope.datas.reasons || null,
             pain: $scope.datas.pain || null,
+            firstpain: $scope.datas.firstpain || null,
             bottom: $scope.datas.bottom || null,
             peak: $scope.datas.peak || null,
             startdate: $scope.datas.startdate || null,
@@ -464,6 +469,7 @@ export class GeneralComponent {
             startingCycle: $scope.datas.startingCycle || null,
             modifiedBy: $scope.datas.modifiedBy || null,
             treatment: $scope.datas.treatment || null,
+            dn4: $scope.datas.dn4 || null,
             family: $scope.datas.family || null,
             social: $scope.datas.social || null,
             professional: $scope.datas.professional || null,
@@ -867,10 +873,8 @@ export class GeneralComponent {
       });
     }
 
-
-    $scope.isShown = true
-    $scope.toggleDiv = function(){
-        $scope.isShown = !$scope.isShown;
+    $scope.toggleDiv = function(key){
+      $scope[key] = !$scope[key];
     }
 
     $scope.headers = [

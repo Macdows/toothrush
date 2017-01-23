@@ -78,6 +78,8 @@ export class IsiComponent {
             mood: $scope.datas.mood || null,
             activities: $scope.datas.activities || null,
             occurences: $scope.datas.occurences || null
+          }).then(function() {
+            $state.go('records');
           });
         }
         $scope.loading = false;
