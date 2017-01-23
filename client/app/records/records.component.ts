@@ -14,44 +14,63 @@ export class RecordsComponent {
   /*@ngInject*/
   constructor($scope, Auth) {
     $scope.loading = true;
+    console.log(Auth);
 
 
     Auth.getCurrentUser().then(function(result) {
       var userId = result._id;
-
       var ref = firebase.database().ref('records');
 
-      ref.child('general').orderByChild('userId').equalTo(userId)
-        .on("value", function(general) {
-          ref.child('edas').orderByChild('userId').equalTo(userId)
-            .on("value", function(edas) {
-              ref.child('isi').orderByChild('userId').equalTo(userId)
-                .on("value", function(isi) {
-                  ref.child('psqi').orderByChild('userId').equalTo(userId)
-                    .on("value", function(psqi) {
-                      ref.child('dn4').orderByChild('userId').equalTo(userId)
-                        .on("value", function(dn4) {
-                          var categories = [];
-                          categories.push(general.val(), edas.val(), isi.val(), psqi.val(), dn4.val());
-                          var list = [];
-                          angular.forEach(categories, function(category, key) {
-                            angular.forEach(category, function(record, k) {
-                              record.parentKey = key + '-id';
-                              record.type = key;
-                              record.id = k;
-                              list.push(record);
-                            });
-                          });
-
-                          $scope.$evalAsync(function(){
-                            $scope.records = list;
-                            $scope.loading = false;
-                          });
-                      });
-                  });
-              });
+      if (Auth.hasRole('admin')) {
+        ref.once('value').then(function(datas) {
+          var list = [];
+          angular.forEach(datas.val(), function(category, key) {
+            angular.forEach(category, function(record, k) {
+              record.parentKey = key + '-id';
+              record.type = key;
+              record.id = k;
+              list.push(record);
+            });
           });
-      });
+
+          $scope.$evalAsync(function(){
+            $scope.records = list;
+            $scope.loading = false;
+          });
+        })
+      } else if (Auth.hasRole('user')) {
+        ref.child('general').orderByChild('userId').equalTo(userId)
+          .on("value", function(general) {
+            ref.child('edas').orderByChild('userId').equalTo(userId)
+              .on("value", function(edas) {
+                ref.child('isi').orderByChild('userId').equalTo(userId)
+                  .on("value", function(isi) {
+                    ref.child('psqi').orderByChild('userId').equalTo(userId)
+                      .on("value", function(psqi) {
+                        ref.child('dn4').orderByChild('userId').equalTo(userId)
+                          .on("value", function(dn4) {
+                            var categories = [];
+                            categories.push(general.val(), edas.val(), isi.val(), psqi.val(), dn4.val());
+                            var list = [];
+                            angular.forEach(categories, function(category, key) {
+                              angular.forEach(category, function(record, k) {
+                                record.parentKey = key + '-id';
+                                record.type = key;
+                                record.id = k;
+                                list.push(record);
+                              });
+                            });
+
+                            $scope.$evalAsync(function(){
+                              $scope.records = list;
+                              $scope.loading = false;
+                            });
+                        });
+                    });
+                });
+            });
+        });
+      }
     });
 
     $scope.exportPdf = function(item) {

@@ -22,7 +22,7 @@ html{
 }
 
 .form-labels-on-top .form-title-row{
-    margin: 0 auto 40px;
+    margin: 40px auto 40px;
 }
 
 .form-labels-on-top h1{
@@ -170,7 +170,7 @@ html{
 }
 
 .input-small {
-  width: 40px !important;
+  width: 80px !important;
 }
 
 .inline {
@@ -197,6 +197,46 @@ img.loading {
 
 .record-links {
   text-align: center;
+}
+
+.abal {
+  margin-left: -40px !important;
+}
+
+.kek {
+
+  margin-left: -154px;
+
+  input[type='text'] {
+      width: 150px;
+      margin: 3px;
+    }
+  select {
+      width: 150px !important;
+      margin: 3px;
+  }
+
+  div.item_title
+  {
+    text-align: center;
+  }
+
+
+  td.cell_center
+  {
+    text-align: center;
+  }
+
+  table
+  {
+    width: 100%;
+  }
+
+  .smallkek
+  {
+    width: 30px !important;
+    padding: 0;
+  }
 }
 
 /* Making the form responsive. Remove this media query

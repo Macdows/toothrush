@@ -8,7 +8,7 @@ import routes from './psqi.routes';
 export class PsqiComponent {
   /*@ngInject*/
   constructor($scope, $state, Auth) {
-    
+
     $scope.loading = true;
 
     if($state.params.id) {
@@ -99,16 +99,19 @@ export class PsqiComponent {
       {
         label: 'Identifiant du patient :',
         class: 'square',
+        type: 'text',
         key: 'patientId'
       },
       {
         label: 'Date de naissance :',
         class: 'square',
+        type: 'date',
         key: 'birthdate'
       },
       {
         label: 'Date du jour :',
         class: 'middle',
+        type: 'date',
         key: 'date'
       }
     ]

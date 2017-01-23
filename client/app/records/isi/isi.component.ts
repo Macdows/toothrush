@@ -9,7 +9,7 @@ import routes from './isi.routes';
 export class IsiComponent {
   /*@ngInject*/
   constructor($scope, $state, Auth) {
-    
+
     var pain = ['Aucune', 'Légère', 'Moyenne', 'Élevée', 'Extrême'];
     var satisfaction = ['Très satisfait(e)', 'Saitsfait(e)', 'Neutre', 'Insatisfait(e)', 'Très insatisfait(e)'];
     var trouble = ['Aucunement', 'Légèrement', 'Moyennement', 'Très',  'Extrêmement'];
@@ -88,16 +88,19 @@ export class IsiComponent {
       {
         label: 'Identifiant du patient :',
         class: 'square',
+        type: 'text',
         key: 'patientId'
       },
       {
         label: 'Date de naissance :',
         class: 'square',
+        type: 'date',
         key: 'birthdate'
       },
       {
         label: 'Date du jour :',
         class: 'middle',
+        type: 'date',
         key: 'date'
       }
     ]

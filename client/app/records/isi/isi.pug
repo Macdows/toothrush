@@ -7,7 +7,7 @@ img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
     label
       span {{item.label}}
       br
-      input(type='text', ng-model='datas[item.key]')
+      input(type='{{item.type}}', ng-model='datas[item.key]')
   .clearfix
     p.description
       | Pour chacune des questions, veuillez cocher celle qui correspond le plus fidèlement à votre sommeil au cours du dernier mois.

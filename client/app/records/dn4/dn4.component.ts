@@ -8,7 +8,7 @@ import routes from './dn4.routes';
 export class Dn4Component {
   /*@ngInject*/
   constructor($scope, $state, Auth) {
-    
+
     $scope.loading = true;
 
     if($state.params.id) {
@@ -68,16 +68,19 @@ export class Dn4Component {
       {
         label: 'Identifiant du patient :',
         class: 'square',
+        type: 'text',
         key: 'patientId'
       },
       {
         label: 'Date de naissance :',
         class: 'square',
+        type: 'date',
         key: 'birthdate'
       },
       {
         label: 'Date du jour :',
         class: 'middle',
+        type: 'date',
         key: 'date'
       }
     ]

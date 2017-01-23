@@ -7,7 +7,7 @@ img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
     label
       span {{item.label}}
       br
-      input(type='text', ng-model='datas[item.key]')
+      input(type='{{item.type}}', ng-model='datas[item.key]')
   .clearfix
     p.description
       | Les questions suivantes ont trait à vos habitudes de sommeil peandant le dernier mois seulement. Vos réponses doivent indiquer ce qui correspond aux expériences que vous avez eues pendant la majorité des jours et des nuits au cours du dernier mois. Répondez à toutes les questions.

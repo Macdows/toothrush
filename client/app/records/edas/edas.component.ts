@@ -8,7 +8,7 @@ import routes from './edas.routes';
 export class EdasComponent {
   /*@ngInject*/
   constructor($scope, $state, Auth) {
-    
+
 
     $scope.loading = true;
 
@@ -92,16 +92,19 @@ export class EdasComponent {
       {
         label: 'Identifiant du patient :',
         class: 'square',
+        type: 'text',
         key: 'patientId'
       },
       {
         label: 'Date de naissance :',
         class: 'square',
+        type: 'date',
         key: 'birthdate'
       },
       {
         label: 'Date du jour :',
         class: 'middle',
+        type: 'date',
         key: 'date'
       }
     ]

@@ -7,7 +7,7 @@ img.loading(ng-show='loading', src='assets/images/ajax-loader.gif')
     label
       span {{item.label}}
       br
-      input(type='text', ng-model='datas[item.key]')
+      input(type='{{item.type}}', ng-model='datas[item.key]')
   .clearfix
 
   div(ng-repeat='question in formContent')

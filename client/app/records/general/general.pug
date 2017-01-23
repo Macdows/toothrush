@@ -7,7 +7,7 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
     label
       span {{item.label}}
       br
-      input(type='text', ng-model='datas[item.key]')
+      input(type='{{item.type}}', ng-model='datas[item.key]')
   .middle
     label
       span Sexe :
@@ -211,19 +211,97 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
       br
       input(type='text', ng-model='datas.mallampati')
 
-  // //9 TRAUMATISME :
+  // 9 TRAUMATISME :
   .form-title-row
     h1 9 Traumatisme :
   .middle
     label
       textarea(ng-model='datas.trauma')
 
-  // //10 OBSERVATIONS COMPLÉMENTAIRES :
+  // 10 OBSERVATIONS COMPLÉMENTAIRES :
   .form-title-row
     h1 10 Observations complémentaires :
   .middle
     label
       textarea(ng-model='datas.observations')
+
+  // 11
+  div(ng-click='toggleDiv()')
+    .form-title-row
+      h1 11 Palpation(s) douloureuse(s) des muscles masticateurs, des ATM, et des muscles cervico-scapulaires :
+  div.kek(ng-show="isShown")
+    table.vtable
+      thead
+        tr
+          th
+          th(colspan='3') Côté droit
+          th(colspan='3') Côté gauche
+      tbody
+        tr
+          td Muscle 1kg
+          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+        tr(ng-repeat="titre in douleurReferee1")
+          td {{titre.label}}
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputL']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
+        tr
+          td(colspan='7')
+            .form-radio-buttons
+              span Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?&nbsp;
+              label(ng-repeat="option in scale")
+                input(
+                  type='radio',
+                  name='11_radio_palpation'
+                  ng-model="datas.palpationMuscles"
+                )
+                span {{option}}
+        tr(ng-repeat="titre in douleurReferee2")
+          td {{titre.label}}
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputL']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
+        tr
+          br
+        tr(ng-repeat="titre in localisationATM")
+          td {{titre.label}}
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
+          td.cell_center
+            select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
+            input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
 
   // //12 Rapport incisifs
   .form-title-row
@@ -279,8 +357,62 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
       input(type='radio', ng-model='datas.offset', value='non')
       span Non
 
-  // //14 TRAJET D'OUVERTURE/FERMETURE :
-  // ng-model :
+
+  // 13
+  .form-title-row
+    h1 13 Mouvements d'ouverture, latéralités et propulsion :
+  .kek
+    table.vtable
+      thead
+        tr
+          th
+          th(colspan='3') Côté droit
+          th(colspan='3') Côté gauche
+      tbody
+        tr
+          td
+            | Ouverture non douloureuse :
+            input.smallkek(type='text', value='0', ng-model='datas.noPainOpen')
+            | mm
+          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+          td.cell_center(ng-repeat="titre in titre_tableau_douleur") {{titre}}
+        tr(ng-repeat="key in label_partie_13")
+          td
+            |{{key.label}}
+            input.smallkek(ng-model= "datas[titre.key+'PainOpen']", type='text', value='0', ng-if='key.showInput')
+            span(ng-if='key.showInput') mm
+            td.cell_center
+              input(type='checkbox', ng-model="datas[titre.key+'PainCausedR']")
+            td.cell_center
+              input(type='checkbox', ng-model="datas[titre.key+'SamePainR']")
+            td.cell_center
+              select(ng-model="datas[titre.key+'SelectR']", ng-options='color for color in localisationMuscle')
+              input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectR']=='Autres'"))
+            td.cell_center
+              input(type='checkbox', ng-model="datas[titre.key+'PainCausedL']")
+            td.cell_center
+              input(type='checkbox', ng-model="datas[titre.key+'SamePainL']")
+            td.cell_center
+              select(ng-model="datas[titre.key+'SelectL']", ng-options='color for color in localisationMuscle')
+              input(type='text', ng-model="datas[titre.key+'OtherInputR']", ng-if=("datas[titre.key+'SelectL']=='Autres'"))
+        tr
+          td(colspan='12')
+            .form-radio-buttons
+              span Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ?&nbsp;
+              label(ng-repeat="option in scale")
+                input(
+                  type='radio',
+                  name='13_radio_maux_tete',
+                  ng-model='datas.headache'
+                )
+                span {{option}}
+          tr
+            td.cell_center(colspan='1')
+              div Si oui lesquels ?
+            td.cell_center(colspan='11')
+              textarea.text_field_e(ng-model='datas.whichMotionHeadache', rows='2', style='width:100%')
+
+  // 14 TRAJET D'OUVERTURE/FERMETURE :
   .form-title-row
     h1 14 Trajet d'ouverture/fermeture :
   span Forme du trajet d'ouverture :
@@ -306,7 +438,46 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
         input#trajetouverture4(type='checkbox', ng-model='datas.deviationLeft', onchange="if(document.getElementById('trajetouverture1').checked) document.getElementById('trajetouverture0').checked = false;")
         span déviation non corrigée à gauche
 
-  // //16 BLOCAGE ARTICULAIRE :
+  // 15
+  .form-title-row
+    h1 15 Bruits articulaires lors des mouvements fonctionnels :
+  .kek
+    table.vtable
+      thead
+        tr
+          th(colspan='2')
+          th(colspan='2') Practicien
+          th(colspan='2') Patient
+          th(colspan='2')
+      tbody
+        tr
+          td(colspan='2')
+          td.cell_center Claquement
+          td.cell_center Crépitement
+          td.cell_center Claquement
+          td.cell_center Crépitement
+          td.cell_center Douleur
+          td.cell_center Douleur habituelle ?
+        tr(ng-repeat="objet in label_partie_15")
+          td {{objet.label}}
+          td {{objet.position}}
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PractitionerClapping']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PractitionerCrackling']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PatientClapping']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PatientCrackling']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PatientPain']")
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'CheckboxUsualPain']")
+            select(ng-model="datas[titre.key+'SelectUsualPain']", ng-options='color for color in localisationMuscle')
+            br
+            input(type='text', ng-model="datas[titre.key+'OtherUsualPain']", ng-if=("datas[titre.key+'SelectUsualPain']=='Autres'"))
+
+  // 16 BLOCAGE ARTICULAIRE :
   .form-title-row
     h1 16 Blocage articulaire :
   .left
@@ -336,6 +507,38 @@ img.loading(ng-if='loading', src='assets/images/ajax-loader.gif')
       span Dernier episode :
       br
       input(type='text', ng-model='lastoccurence')
+
+  // 17
+  .form-title-row
+    h1 17 Test du bâtonnet :
+  .kek.abal
+    table.vtable
+      thead
+        tr
+          td(colspan='2')
+          th(colspan='2') Douleur
+      tbody
+        tr
+          td(colspan='2')
+          th Droite
+          th Gauche
+        tr(ng-repeat="objet in label_partie_17")
+          td {{objet.label}}
+          td {{objet.position}}
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainR']")
+            select(ng-model="datas[titre.key+'SelectStickR']", ng-options='color for color in localisationMuscle')
+            br
+            input(type='text', ng-model="datas[titre.key+'OtherPainStickR']", ng-if=("datas[titre.key+'SelectStickR']=='Autres'"))
+          td.cell_center
+            input(type='checkbox', ng-model="datas[titre.key+'PainL']")
+            select(ng-model="datas[titre.key+'SelectStickL']", ng-options='color for color in localisationMuscle')
+            br
+            input(
+              type='text',
+              ng-model="datas[titre.key+'OtherPainStickL']",
+              ng-if=("datas[titre.key+'SelectStickL']=='Autres'")
+            )
 
   //18 Elasticité articulaire
   .form-title-row
